@@ -4,8 +4,8 @@
 title: 전윤환 | Backend Engineer
 url: 'https://yunhwane.github.io'
 
-# username.github.io 리포는 baseurl 비워둠
-# baseurl: ''
+# project page (yunhwane/portfolio 리포) 배포이므로 baseurl 지정
+baseurl: '/portfolio'
 
 description: Backend Engineer · 결제 · 분산 시스템 · Spring Boot
 theme_skin: blue # blue turquoise green berry orange ceramic teal oceanstale
