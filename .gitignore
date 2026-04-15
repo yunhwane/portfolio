@@ -1,0 +1,13 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-metadata
+.jekyll-cache
+
+# OMC / Claude Code 세션 상태 (로컬 전용)
+.omc/
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
