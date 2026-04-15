@@ -282,6 +282,39 @@ p {
     height: 12px;
     background: lighten($theme-color, 15%);
   }
+
+  .skill-tier {
+    margin-bottom: 18px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .skill-tier-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $theme-color;
+    margin: 0 0 8px;
+  }
+  .skill-tier-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    li {
+      font-size: 13px;
+      padding: 4px 10px;
+      border: 1px solid lighten($theme-color, 30%);
+      border-radius: 3px;
+      background: lighten($theme-color, 45%);
+      color: darken($theme-color, 10%);
+    }
+  }
 }
 
 .footer {

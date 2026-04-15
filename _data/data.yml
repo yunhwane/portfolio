@@ -7,14 +7,12 @@ sidebar:
   about: True
   education: True
 
-  # 프로필 정보
   name: 전윤환 (Yunhwane Jeon)
-  tagline: Backend Engineer · 결제 · 분산 시스템
+  tagline: Backend Engineer — 결제 시스템 · 분산 아키텍처
   avatar: profile.png
 
-  # 사이드바 링크
-  email: TODO@example.com     # 공개용 이메일로 교체
-  phone:                       # 공개 노출은 권장하지 않음
+  email: TODO@example.com
+  phone:
   timezone: Asia/Seoul
   citizenship:
   website:
@@ -49,7 +47,7 @@ sidebar:
     - item: 결제 · 정산 도메인
       link:
 
-    - item: 이벤트 기반 아키텍처 · 분산 시스템
+    - item: 이벤트 기반 아키텍처
       link:
 
     - item: Observability · 성능 튜닝
@@ -57,19 +55,18 @@ sidebar:
 
 
 career-profile:
-  title: About Me
+  title: About
   summary: |
-    시스템 설계와 결제 도메인 경험을 보유한 **3년차 백엔드 개발자** 전윤환입니다.
-    서비스 초기 단계부터 백엔드 아키텍처 설계를 주도하고,
-    **앱 출시 당일 2,000명 동시 트래픽을 장애 없이 처리**한 경험이 있습니다.
+    **결제·분산 시스템을 중심으로 3년간 백엔드를 설계·운영해온 엔지니어** 전윤환입니다.
 
-    **KG 이니시스 PG 결제 시스템 구축**, **Kafka 기반 결제실패 재처리**,
-    **Transactional Outbox 패턴**을 통한 메시지 유실 방지 등
-    결제 안정성과 데이터 정합성을 최우선으로 개발해 왔습니다.
+    서비스 런칭부터 아키텍처를 책임지며, 앱 출시 당일 2,000명 동시 트래픽을
+    무장애로 처리했습니다. KG이니시스 PG 연동, Kafka 기반 결제 실패 재처리,
+    Transactional Outbox 패턴을 도입해 결제 정합성을 보장해왔고,
+    커버링 인덱스 적용으로 주요 쿼리 응답을 6.44s → 1.24s로 단축한 경험이 있습니다.
 
-    분산 락, 이벤트 기반 아키텍처, Observability 환경 구축 등 확장 가능한
-    시스템을 설계·운영하며, **백엔드 단독 개발 및 기획에 참여한 사이드 프로젝트**로
-    **$30,000 매출** 및 **1,000+ 활성 사용자**를 확보한 경험이 있습니다.
+    "왜 이렇게 설계했는가"를 설명할 수 있는 코드를 지향합니다.
+    최근에는 이벤트 기반 아키텍처와 Observability에 관심을 두고
+    기술 선택의 trade-off를 팀에 설명하고 설득하는 일을 좋아합니다.
 
 education:
   title: Education
@@ -77,74 +74,78 @@ education:
   - degree: 산업시스템공학 (편입)
     university: 동국대학교 (서울)
     time: 2020.03 - 2026.08
-    details: |
-      산업시스템공학과 편입 (서울캠퍼스)
 
   - degree: 산업공학과
     university: 한국교통대학교
     time: 2015.03 - 2018.03
-    details: |
-      산업공학과 수료
 
 experiences:
-  title: Experience & Projects
+  title: Experience
   info:
-  - role: 퍼플영 — 백엔드 아키텍처 설계 주도
+  - role: 주식회사 우리의이야기 — 백엔드 엔지니어
     time: 2025.07 - 현재
-    company: 주식회사 우리의이야기
+    company: 서비스 "퍼플영" 런칭 · 백엔드 아키텍처 책임
     details: |
-      서비스 런칭 초기부터 백엔드 아키텍처 설계를 주도하며, 안정적인 운영 환경 구축과 코드 품질 관리를 함께 책임지고 있습니다.
+      서비스 런칭 초기부터 백엔드 아키텍처 설계를 주도하고,
+      출시 이후의 안정성과 품질 관리를 책임지고 있습니다.
 
-      - **백엔드 아키텍처 설계 주도** — 초기 기술 스택 선정부터 핵심 도메인 API 구조 설계까지 전 과정을 리드, Spring Boot + PostgreSQL 기반 확장 가능한 REST API 구현
-      - **테스트 문화 정착** — 테스트 커버리지 70% 유지, 460개 이상의 테스트 코드 작성으로 회귀 버그 방지 및 배포 안정성 확보. CI 파이프라인에 테스트 자동 실행 연동
-      - **출시 당일 트래픽 안정 처리** — 앱 출시 첫날 약 2,000명 동시 유입을 장애 없이 처리, 안정적인 초기 서비스 운영
-      - **인증 시스템 설계** — OAuth2/OIDC 기반 인증·인가 구조 설계, JWT Stateless + Refresh Token Rotation 도입으로 보안 강화 및 인증 성능 개선
-      - **캐시 전략 적용** — 공통 코드 관리 테이블에 Caffeine 로컬 캐시 적용, 불필요한 DB 접근 최소화 및 조회 성능 개선
-      - **데이터 마이그레이션** — 기존 시스템 데이터를 신규 스키마로 무중단 전환, 데이터 변환 및 정합성 검증 로직 구현으로 오류 없는 이전 완료
-      - **성능 중심 DB 설계** — PostgreSQL 기반 스키마 설계 및 쿼리 튜닝으로 조회 성능 최적화
+      **아키텍처 · 인증**
 
-      _Stack_: Java · Spring Boot · PostgreSQL · OIDC · Caffeine Cache
+      - 초기 기술 스택 선정부터 핵심 도메인 API 구조 설계까지 전 과정 리드 (Spring Boot + PostgreSQL)
+      - OAuth2 / OIDC 기반 인증·인가 구조 설계, JWT Stateless + Refresh Token Rotation 도입
 
-  - role: BIGLINK — AI 기반 SNS 자동 포스팅 플랫폼
-    time: 2024.06 - 2025.05
-    company: 빅링크에이아이
+      **안정성 · 성능**
+
+      - 앱 출시 첫날 **약 2,000명 동시 유입을 장애 없이 처리**
+      - 공통 코드 관리 테이블에 Caffeine 로컬 캐시 적용, DB 부하 절감
+      - 기존 시스템 데이터를 신규 스키마로 무중단 마이그레이션, 정합성 검증 로직 구현
+
+      **품질 · 운영**
+
+      - 테스트 코드 **460개 이상 · 커버리지 70%** 유지, CI에서 테스트 자동 실행
+      - Grafana + Loki 기반 로깅 구조화로 장애 탐지·분석 효율 개선
+      - AI 에이전트 오케스트레이션 시스템 설계 (Claude Code 멀티에이전트 파이프라인)
+
+      _Stack_: Java · Spring Boot · PostgreSQL · OIDC · Caffeine · Grafana · Loki
+
+  - role: 빅링크에이아이 — 백엔드 엔지니어
+    time: 2023.09 - 2025.05
+    company: 결제 · 이벤트 기반 시스템 개발 (1년 9개월)
     details: |
-      AI 기반 SNS 자동 포스팅 플랫폼의 핵심 백엔드 기능을 담당했습니다.
+      AI 기반 SNS 자동 포스팅 플랫폼(BIGLINK)과 반려동물 라이브 커머스(PetPlay)에서
+      결제 시스템 안정화와 이벤트 기반 아키텍처 도입을 담당했습니다.
 
-      - **챗봇 프롬프트 조회 성능 80% 개선** — 커버링 인덱스 적용으로 응답속도 6.44s → 1.24s 단축
-      - **Transactional Outbox 패턴 도입** — 자동 포스팅 예약 시 Kafka 메시지 유실 방지를 위해 Outbox 패턴 설계 및 적용, 데이터 정합성 보장
-      - **분산 락으로 스케줄러 안정화** — 스케일 아웃 환경에서 Redis 분산 락 도입, 다중 서버 간 중복 실행 문제 해결
-      - **결제 시스템 고도화** — KG이니시스 PG 연동 및 Kafka 기반 결제 승인 실패 재처리 구현
-      - **전략 패턴 기반 소셜 로그인** — 네이버, 카카오, 구글, 애플 OAuth를 Strategy Pattern으로 통합 설계, 확장성 확보
-      - 네이버·페이스북·인스타그램 자동 포스팅 기능 개발
-      - **AWS 인프라 구축** — 로드밸런서, Route 53, staging/production 환경 직접 설정
+      **BIGLINK** · AI 기반 SNS 자동 포스팅 플랫폼 (2024.06 ~ 2025.05)
 
-      _Stack_: Java · Spring Boot · MySQL · Kafka · Redis · AWS
+      - 챗봇 프롬프트 조회에 커버링 인덱스 적용, **응답속도 6.44s → 1.24s (80% 개선)**
+      - 자동 포스팅 예약 시 Kafka 메시지 유실을 막기 위해 **Transactional Outbox 패턴** 설계·적용
+      - 스케일 아웃 환경의 스케줄러 중복 실행 문제를 **Redis 분산 락**으로 해결
+      - KG이니시스 PG 연동 및 **Kafka 기반 결제 승인 실패 재처리** 구현
+      - 네이버·카카오·구글·애플 OAuth를 전략 패턴으로 통합
+      - AWS 로드밸런서 · Route 53 · staging / production 환경 구축
 
-  - role: PetPlay — 반려동물 인플루언서 라이브 커머스
-    time: 2023.09 - 2024.06
-    company: 빅링크에이아이
-    details: |
-      반려동물 특화 인플루언서 라이브 커머스 플랫폼의 백엔드 개발을 담당했습니다.
+      **PetPlay** · 반려동물 인플루언서 라이브 커머스 (2023.09 ~ 2024.06)
 
-      - **다중 SNS 인증 서버 구축** — 6개 플랫폼(네이버, 카카오, 인스타그램, 페이스북, 틱톡, X) OAuth를 전략 패턴으로 단일 구조에 통합
-      - **결제 시스템 고도화** — KG이니시스 PC 결제 추가, 망 취소·환불 기능 구현, Kafka 기반 결제 실패 재시도로 결제 성공률 향상
-      - **이미지 업로드 병목 해소** — AWS Presigned URL 전환으로 대용량 이미지 처리 부하 제거
-      - **신규 도메인 API 개발** — 원고 컨펌, 방문형 쿠폰, 정산 API 설계 및 구현
+      - 결제 **망 취소 · 환불 · 재시도 로직** 구현으로 결제 성공률 향상
+      - 6개 플랫폼(네이버·카카오·인스타·페이스북·틱톡·X) OAuth를 전략 패턴으로 단일 구조 통합
+      - 이미지 업로드 병목을 **AWS Presigned URL 방식**으로 전환, 서버 부하 제거
+      - 원고 컨펌 · 방문형 쿠폰 · 정산 API 신규 도메인 설계
 
-      _Stack_: Spring Boot · MySQL · Kafka · JPA · AWS
+      _Stack_: Java · Spring Boot · MySQL · Kafka · Redis · AWS · JPA
 
-  - role: 그로스 헬퍼 — 설문/인터뷰 매칭 플랫폼
+  - role: 그로스 헬퍼 — 사이드 프로젝트
     time: 2023.06 - 2024.06
-    company: 사이드 프로젝트 (백엔드 단독 개발 · 기획 참여)
+    company: 백엔드 단독 개발 · 기획 참여
     details: |
-      대학생·스타트업을 위한 설문/인터뷰 매칭 플랫폼에서 **백엔드를 단독으로 개발**하고 **서비스 기획에 참여**했습니다.
+      대학생·스타트업을 위한 설문/인터뷰 매칭 플랫폼을 기획 단계부터 참여하여
+      백엔드를 단독으로 설계·개발·운영했습니다.
       🔗 [GitHub Organization](https://github.com/GrowthHelper-Intermission)
 
-      - **앱스토어·플레이스토어 출시** — CI/CD(GitHub Actions + Docker) 구축 후 직접 출시, 퍼포먼스 마케팅으로 **MAU 1,000명+ 달성, 누적 매출 $30,000 확보**
-      - **스크리닝 기반 매칭 시스템** — 신뢰성 강화를 위한 다양한 필터링 조건 설계 및 구현
+      - **MAU 1,000명 이상 · 누적 매출 $30,000** 확보
+      - 앱스토어·플레이스토어 출시, GitHub Actions + Docker 기반 **CI/CD 직접 구축**
+      - 신뢰성 있는 매칭을 위한 스크리닝 기반 필터링 시스템 설계·구현
 
-      _Stack_: Spring Framework · JPA · MySQL · Redis · Docker · GitHub Actions · AWS
+      _Stack_: Spring · JPA · MySQL · Redis · Docker · GitHub Actions · AWS
 
 certifications:
   title: Certifications & Awards
@@ -156,8 +157,7 @@ certifications:
     credentialid:
     credentialurl:
     credentialname:
-    details: |
-      SQL 개발 역량 인증
+    details:
 
   - name: 창업동아리 우수상
     start:
@@ -166,38 +166,42 @@ certifications:
     credentialid:
     credentialurl:
     credentialname:
-    details: |
-      창업동아리 활동 우수상 수상
+    details:
 
 skills:
   title: Skills
 
   toolset:
+  # Primary — 일상적으로 사용, 설계 수준의 판단 가능
   - name: Java · Spring Boot
-    level: 90%
+    level: Primary
 
-  - name: Spring Data JPA · QueryDSL
-    level: 85%
+  - name: JPA · QueryDSL
+    level: Primary
 
   - name: MySQL · PostgreSQL
-    level: 85%
+    level: Primary
 
+  # Proficient — 실무에서 도입·운영 경험
   - name: Kafka · 이벤트 기반 아키텍처
-    level: 80%
+    level: Proficient
 
   - name: Redis · 분산 락 · Caffeine
-    level: 80%
-
-  - name: AWS (EC2 · RDS · S3 · ELB · Route 53)
-    level: 75%
-
-  - name: Grafana · Loki · Observability
-    level: 75%
+    level: Proficient
 
   - name: OAuth2 · OIDC · JWT
+    level: Proficient
 
-    level: 80%
+  - name: AWS (EC2 · RDS · S3 · ELB · Route 53)
+    level: Proficient
+
+  # Familiar — 실무 도입 경험은 있으나 학습 지속 중
+  - name: Grafana · Loki · Observability
+    level: Familiar
+
+  - name: Docker · GitHub Actions
+    level: Familiar
 
 footer: >
-  &copy; 2026 전윤환 · Built with
+  &copy; 2026 전윤환 · Based on
   <a href="https://github.com/sharu725/online-cv" target="_blank" rel="nofollow">online-cv</a>.
