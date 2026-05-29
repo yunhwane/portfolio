@@ -19,6 +19,12 @@
   {% for contribution in oss.contributions %}
   <div class="item">
 
+    {% if contribution.status == 'merged' %}
+    <span class="badge-merged">Merged</span>
+    {% elsif contribution.status == 'open' %}
+    <span class="badge-open">In Review</span>
+    {% endif %}
+
     <span class="project-title">
       {% if contribution.link %}
       <a href="{{ contribution.link }}" target="_blank">{{ contribution.title }}</a>
@@ -29,6 +35,10 @@
 
     {% if contribution.tagline %}
     - <span class="project-tagline">{{ contribution.tagline }}</span>
+    {% endif %}
+
+    {% if contribution.meta %}
+    <span class="project-meta">{{ contribution.meta }}</span>
     {% endif %}
 
   </div>

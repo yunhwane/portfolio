@@ -8,7 +8,7 @@ url: 'https://yunhwane.github.io'
 baseurl: '/portfolio'
 
 description: Backend Engineer · 결제 · 분산 시스템 · Spring Boot
-theme_skin: blue # blue turquoise green berry orange ceramic teal oceanstale
+theme_skin: mono # mono(미니멀 무채색·추천) blue turquoise green berry orange ceramic teal oceanstale
 chrome_mobile_color:
 
 # Tracker (Google Analytics를 쓰지 않으면 비워두세요)

@@ -4,12 +4,12 @@
 
 sidebar:
   position: right
-  about: True
+  about: False
   education: True
 
   name: 전윤환 (Yunhwane Jeon)
   tagline: Backend Engineer · 결제 · 분산 시스템
-  avatar: profile.png
+  # avatar: profile.png   # 사진 미사용 — 값을 비워두면 프로필 이미지가 렌더링되지 않습니다.
 
   email: TODO@example.com
   phone:
@@ -237,6 +237,55 @@ skills:
 
   - name: Docker · GitHub Actions
     level: Familiar
+
+
+oss:
+  title: Open Source Contributions
+  intro: |
+    Apache · Elastic · Keycloak · Trino · Hibernate 등 메이저 오픈소스 프로젝트의
+    Java 백엔드 코드베이스에 직접 기여했습니다. 대규모 코드베이스의 컨벤션을 빠르게 파악하고,
+    버그 수정 · 검증 로직 · 테스트 보강 PR을 메인테이너 리뷰를 거쳐 머지시킨 경험이 있습니다.
+  contributions:
+  - title: Keycloak
+    link: https://github.com/keycloak/keycloak/pull/47684
+    status: merged
+    tagline: 빈 값/잘못된 OIDC 속성에서 발생하던 NumberFormatException 수정
+    meta: PR #47684 · IAM · OIDC · Java
+  - title: Apache Gravitino
+    link: https://github.com/apache/gravitino/pull/10663
+    status: merged
+    tagline: 모델 버전 요청 검증을 try 블록 안으로 이동해 예외 처리 정합성 개선
+    meta: PR #10663 · Apache · Data Catalog
+  - title: Checkstyle
+    link: https://github.com/checkstyle/checkstyle/pull/19577
+    status: merged
+    tagline: Javadoc 관련 Check의 기본 프로퍼티 정비 (MissingJavadocType · JavadocContentLocation)
+    meta: PR #19576, #19577 (#19579 진행 중) · Static Analysis
+  - title: DSpace
+    link: https://github.com/DSpace/DSpace/pull/12255
+    status: merged
+    tagline: dspace-api 모듈의 빈 Javadoc 태그 일괄 정리 (2개 배치)
+    meta: PR #12248, #12255 · Java
+  - title: Elasticsearch
+    link: https://github.com/elastic/elasticsearch/pull/145405
+    status: open
+    tagline: search 요청 파싱 실패 시 에러 메시지 가독성 개선
+    meta: PR #145405 · Elastic · Search
+  - title: Trino
+    link: https://github.com/trinodb/trino/pull/28971
+    status: open
+    tagline: Ignite 커넥터의 음수 scale decimal 타입 처리 테스트 추가
+    meta: PR #28971 · Distributed SQL
+  - title: Hibernate Reactive
+    link: https://github.com/hibernate/hibernate-reactive/pull/3527
+    status: open
+    tagline: Hibernate ORM 6.3 세션 레벨 batch/subselect fetching API 검증 테스트
+    meta: PR #3527 · ORM
+  - title: Valkey GLIDE
+    link: https://github.com/valkey-io/valkey-glide/pull/5687
+    status: open
+    tagline: Java 린트 파이프라인에 Checkstyle 도입
+    meta: PR #5687 · Valkey · Build/CI
 
 
 footer: >

@@ -19,10 +19,10 @@ h6 {
 }
 
 a {
-  color: darken($theme-color, 15%);
+  color: $theme-color;
   &:hover {
     text-decoration: underline;
-    color: darken($theme-color, 30%);
+    color: $theme-color;
   }
   &:focus {
     text-decoration: none;
@@ -36,38 +36,43 @@ p {
 .wrapper {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  background: $theme-color;
+  background: #fff;
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
-  @include box-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+  border: 1px solid $divider;
+  @include box-shadow(0px 1px 3px rgba(0, 0, 0, 0.06));
 }
 
 .sidebar-wrapper {
   grid-column: span 3;
   order: $sidebar-order;
-  background: $theme-color;
-  color: #fff;
+  background: #fff;
+  color: $text-color-secondary;
+  // 사이드바(오른쪽 배치)와 본문 사이 옅은 구분선
+  border-left: 1px solid $divider;
   a {
-    color: #fff;
+    color: $theme-color;
   }
   .profile-container {
     padding: 30px;
-    //background: darken($theme-color, 10%);
-    background: rgba(0, 0, 0, 0.2);
-    text-align: center;
-    color: #fff;
+    background: #fff;
+    border-bottom: 1px solid $divider;
+    text-align: left;
+    color: $text-color;
   }
   .name {
-    font-size: 32px;
-    font-weight: 900;
+    font-size: 26px;
+    font-weight: 700;
+    color: $text-color;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .tagline {
-    color: rgba(256, 256, 256, 0.6);
-    font-size: 16px;
+    color: $text-grey;
+    font-size: 14px;
     font-weight: 400;
+    line-height: 1.5;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -76,7 +81,7 @@ p {
   }
 
   .avatar {
-    //used for profile image
+    // 사진 미사용 — 값이 있을 경우의 대비용
     max-width: 100px;
     margin-bottom: 15px;
     border: 0px solid #fff;
@@ -87,12 +92,13 @@ p {
     .fas,
     .fab,
     .far {
-      margin-right: 5px;
-      font-size: 18px;
+      margin-right: 8px;
+      font-size: 16px;
       vertical-align: middle;
+      color: $text-grey;
     }
     li {
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       &:last-child {
         margin-bottom: 0;
       }
@@ -100,16 +106,23 @@ p {
   }
   .container-block {
     padding: 30px;
+    border-bottom: 1px solid $divider;
+    &:last-child {
+      border-bottom: 0;
+    }
   }
   .container-block-title {
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 700;
+    letter-spacing: 0.06em;
+    color: $text-grey;
     margin-top: 0;
     margin-bottom: 15px;
   }
   .degree {
     font-size: 14px;
+    color: $text-color;
     margin-top: 0;
     margin-bottom: 5px;
   }
@@ -121,20 +134,20 @@ p {
       }
     }
     .meta {
-      color: rgba(256, 256, 256, 0.6);
+      color: $text-grey;
       font-weight: 500;
       margin-bottom: 0px;
       margin-top: 0;
     }
     .time {
-      color: rgba(256, 256, 256, 0.6);
-      font-weight: 500;
+      color: $text-grey;
+      font-weight: 400;
       margin-bottom: 0px;
     }
   }
   .languages-container {
     .lang-desc {
-      color: rgba(256, 256, 256, 0.6);
+      color: $text-grey;
     }
   }
 
@@ -166,15 +179,21 @@ p {
   padding: 60px;
   .section-title {
     text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 500;
-    color: darken($theme-color, 15%);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: $text-color;
     position: relative;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $divider;
   }
   .section {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .experiences-section,
@@ -199,7 +218,7 @@ p {
     font-size: 16px;
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: 500;
+    font-weight: 700;
     flex: 75%;
   }
 
@@ -221,10 +240,10 @@ p {
 
   .project-title {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 700;
     margin-top: 0;
     margin-bottom: 5px;
-    color: darken($theme-color, 15%);
+    color: $text-color;
   }
   .projects-section {
     .intro {
@@ -236,10 +255,49 @@ p {
   }
   .oss-section {
     .intro {
-      margin-bottom: 30px;
+      margin-bottom: 24px;
+      color: $text-color-secondary;
     }
     .item {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid $divider;
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+    }
+    .project-tagline {
+      color: $text-color-secondary;
+    }
+    .project-meta {
+      display: block;
+      margin-top: 4px;
+      color: $text-grey;
+      font-size: 13px;
+    }
+    .badge-merged,
+    .badge-open {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 1px 7px;
+      border-radius: 3px;
+      border: 1px solid $divider;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .badge-merged {
+      color: #fff;
+      background: $theme-color;
+      border-color: $theme-color;
+    }
+    .badge-open {
+      color: $text-color-secondary;
+      background: $smoky-white;
     }
   }
 
@@ -280,7 +338,7 @@ p {
   }
   .level-bar-inner {
     height: 12px;
-    background: lighten($theme-color, 15%);
+    background: $theme-color;
   }
 
   .skill-tier {
@@ -292,10 +350,10 @@ p {
   }
   .skill-tier-title {
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: $theme-color;
+    color: $text-grey;
     margin: 0 0 8px;
   }
   .skill-tier-list {
@@ -309,10 +367,10 @@ p {
     li {
       font-size: 13px;
       padding: 4px 10px;
-      border: 1px solid lighten($theme-color, 30%);
+      border: 1px solid $divider;
       border-radius: 3px;
-      background: lighten($theme-color, 45%);
-      color: darken($theme-color, 10%);
+      background: $smoky-white;
+      color: $text-color-secondary;
     }
   }
 }
@@ -346,7 +404,7 @@ p {
   transition: all 0.3s ease;
 
   &:hover {
-    background: darken($theme-color, 10%);
+    background: lighten($theme-color, 15%);
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
@@ -377,7 +435,7 @@ p {
   transition: all 0.3s ease;
 
   &:hover {
-    background: darken($theme-color, 10%);
+    background: lighten($theme-color, 15%);
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
