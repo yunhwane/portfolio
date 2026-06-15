@@ -1,9 +1,13 @@
 /* ======= Base ======= */
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Pretendard", "Pretendard Variable", -apple-system,
+    BlinkMacSystemFont, "Apple SD Gothic Neo", "Roboto", "Segoe UI",
+    "Malgun Gothic", sans-serif;
   color: $text-color-secondary;
   background: $smoky-white;
-  font-size: 14px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  letter-spacing: -0.003em; // 한글 자간 미세 조정
   padding: 30px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -30,7 +34,7 @@ a {
 }
 
 p {
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 .wrapper {
@@ -193,6 +197,69 @@ p {
     margin-bottom: 50px;
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  /* 요약·경험 본문 공통 가독성 (마크다운 렌더 결과) */
+  .summary,
+  .details {
+    font-size: 14.5px;
+    line-height: 1.75;
+
+    p {
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    ul {
+      padding-left: 18px;
+      margin-bottom: 16px;
+    }
+    li {
+      margin-bottom: 7px;
+      line-height: 1.7;
+      padding-left: 2px;
+    }
+    strong {
+      color: $text-color;
+      font-weight: 700;
+    }
+    em {
+      // _Stack_ 등 보조 표기 — 기울임 대신 메타 톤으로
+      font-style: normal;
+      color: $text-grey;
+      font-size: 13px;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid $divider;
+      margin: 22px 0;
+    }
+    code {
+      font-family: "SFMono-Regular", "Menlo", "Consolas", monospace;
+      font-size: 12px;
+      padding: 2px 7px;
+      background: $smoky-white;
+      color: $text-color-secondary;
+      border: 1px solid $divider;
+      border-radius: 3px;
+    }
+
+    /* '[대표 성과]' 콜아웃 박스 (마크다운 blockquote) */
+    blockquote {
+      margin: 0 0 18px;
+      padding: 11px 16px;
+      background: $smoky-white;
+      border-left: 3px solid $theme-color;
+      border-radius: 0 4px 4px 0;
+      font-size: 14.5px;
+
+      p {
+        margin: 0;
+        line-height: 1.6;
+      }
+      strong {
+        color: $text-color;
+      }
     }
   }
 
