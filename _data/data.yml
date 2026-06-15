@@ -242,30 +242,43 @@ skills:
 oss:
   title: Open Source Contributions
   intro: |
-    Apache · Elastic · Keycloak · Trino · Hibernate 등 메이저 오픈소스 프로젝트의
-    Java 백엔드 코드베이스에 직접 기여했습니다. 대규모 코드베이스의 컨벤션을 빠르게 파악하고,
-    버그 수정 · 검증 로직 · 테스트 보강 PR을 메인테이너 리뷰를 거쳐 머지시킨 경험이 있습니다.
+    Keycloak · Valkey · Apache · Elastic · Trino · Hibernate 등 메이저 오픈소스의
+    Java 백엔드 코드베이스에 직접 기여했습니다. 대규모 코드베이스의 컨벤션을 빠르게 파악해
+    **버그 수정 · 검증 로직 · CI/정적분석 · 테스트 보강** PR을 메인테이너 리뷰를 거쳐 머지시켰습니다.
+    (Merged 6 · In Review 3)
   contributions:
+  # ── Merged ─────────────────────────────────────────────
   - title: Keycloak
     link: https://github.com/keycloak/keycloak/pull/47684
     status: merged
-    tagline: 빈 값/잘못된 OIDC 속성에서 발생하던 NumberFormatException 수정
+    tagline: 빈 값·잘못된 OIDC 속성에서 발생하던 NumberFormatException 수정 (인증 흐름 안정화)
     meta: PR #47684 · IAM · OIDC · Java
+  - title: Valkey GLIDE
+    link: https://github.com/valkey-io/valkey-glide/pull/5687
+    status: merged
+    tagline: Java 린트 파이프라인에 Checkstyle 도입 — 전 서브프로젝트 적용 및 import 규칙 위반 18개 파일 정비
+    meta: PR #5687 · Valkey · Build/CI
   - title: Apache Gravitino
     link: https://github.com/apache/gravitino/pull/10663
     status: merged
     tagline: 모델 버전 요청 검증을 try 블록 안으로 이동해 예외 처리 정합성 개선
     meta: PR #10663 · Apache · Data Catalog
+  - title: harness-starter-kit
+    link: https://github.com/harnessworks/harness-starter-kit/pull/39
+    status: merged
+    tagline: AI 코딩 에이전트 검증 하네스에 Rust 스택 프로필 추가 · Go fixture 빌드/툴체인 경로 검증 보강
+    meta: PR #39, #42 · AI Agent Harness · Python
   - title: Checkstyle
     link: https://github.com/checkstyle/checkstyle/pull/19577
     status: merged
     tagline: Javadoc 관련 Check의 기본 프로퍼티 정비 (MissingJavadocType · JavadocContentLocation)
-    meta: PR #19576, #19577 (#19579 진행 중) · Static Analysis
+    meta: PR #19576, #19577 · Static Analysis
   - title: DSpace
     link: https://github.com/DSpace/DSpace/pull/12255
     status: merged
     tagline: dspace-api 모듈의 빈 Javadoc 태그 일괄 정리 (2개 배치)
     meta: PR #12248, #12255 · Java
+  # ── In Review ──────────────────────────────────────────
   - title: Elasticsearch
     link: https://github.com/elastic/elasticsearch/pull/145405
     status: open
@@ -281,11 +294,6 @@ oss:
     status: open
     tagline: Hibernate ORM 6.3 세션 레벨 batch/subselect fetching API 검증 테스트
     meta: PR #3527 · ORM
-  - title: Valkey GLIDE
-    link: https://github.com/valkey-io/valkey-glide/pull/5687
-    status: open
-    tagline: Java 린트 파이프라인에 Checkstyle 도입
-    meta: PR #5687 · Valkey · Build/CI
 
 
 footer: >
