@@ -60,16 +60,18 @@ career-profile:
     **3년차 Java 백엔드 엔지니어 · 결제 도메인 & 분산 시스템 특화**
 
     서비스 초기 아키텍처 설계부터 런칭·운영까지 End-to-End로 책임져온 백엔드 개발자입니다.
-    **앱 출시 당일 동시접속 2,000명을 무장애로 처리**했고, KG이니시스 PG 연동·Kafka 기반 결제 재처리·
-    **Transactional Outbox 패턴**을 도입해 결제 정합성을 보장해왔습니다.
-    커버링 인덱스 설계로 핵심 쿼리 응답을 **6.44s → 1.24s (80% 개선)** 단축한 경험이 있습니다.
+    **출시 당일 동시접속 2,000명을 장애 없이 처리**했고, KG이니시스 PG 연동과 Kafka 기반 결제 재처리,
+    **Transactional Outbox 패턴**으로 결제 정합성을 지켜왔습니다.
+    커버링 인덱스 설계로는 핵심 쿼리 응답을 **6.44s → 1.24s (80% 단축)** 개선했습니다.
 
     "왜 이렇게 설계했는가"를 설명할 수 있는 코드를 지향하며, 기술 선택의 trade-off를
     팀에 설명하고 설득하는 일을 좋아합니다.
 
     **Core Strengths**
-    `Spring Boot · JPA` · `Kafka · Redis 분산 시스템` · `결제 도메인 (PG · Outbox · 분산 락)`
-    · `쿼리 최적화` · `Observability (Grafana + Loki)` · `AWS 기반 운영`
+
+    - **백엔드 · 아키텍처** — Spring Boot · JPA · Kafka/Redis 이벤트 기반 시스템
+    - **결제 · 분산 처리** — PG 연동 · Transactional Outbox · 분산 락 · 정합성 보장
+    - **성능 · 운영** — 쿼리 최적화 · Observability (Grafana + Loki) · AWS
 
 
 education:
@@ -108,14 +110,21 @@ experiences:
 
       - 테스트 코드 **460개 이상 · 커버리지 70%** 유지, CI에서 자동 실행 → 회귀 방지 체계 확립
       - **Grafana + Loki** 기반 로깅 구조화로 장애 탐지·원인 분석 시간 단축
-      - AI 에이전트 오케스트레이션 시스템 설계 (Claude Code 멀티에이전트 파이프라인)
+
+      **AI 워크플로우 하네스 구축 (Claude Code 기반 Agent Team)**
+
+      - **Jira 이슈 → 문서 생성 → 코드 생성 → 코드 리뷰**로 이어지는 개발 자동화 파이프라인을
+        Claude Code 기반 멀티에이전트로 설계·구축, 반복 작업을 에이전트에 위임
+      - **Code Review Agent**를 직접 개발해 컨벤션·코드 일관성 점검을 자동화,
+        리뷰어별 편차와 반복 지적을 줄여 **팀 코드 일관성 향상**
+      - 에이전트 검증 하네스에 대한 관심을 오픈소스 기여로 확장 (harness-starter-kit · Rust·Go 검증 프로필)
 
       **협업 · 기술적 의사결정**
 
       - 기획·프론트엔드 팀과 주간 API 스펙 리뷰를 운영해 런칭 직전 스펙 변경 리스크 차단
       - Kafka 도입의 운영 부담 vs 장기 확장성을 팀에 설명·설득하여 이벤트 기반 아키텍처 채택 주도
 
-      _Stack_: Java · Spring Boot · PostgreSQL · OIDC · Caffeine · Grafana · Loki
+      _Stack_: Java · Spring Boot · PostgreSQL · OIDC · Caffeine · Grafana · Loki · Claude Code (Agent 파이프라인)
 
   - role: 빅링크에이아이 — 백엔드 엔지니어
     time: 2023.09 - 2025.05
@@ -141,20 +150,20 @@ experiences:
       - **Action** **Transactional Outbox 패턴** 설계·적용, 발행 재시도 구조 구축
       - **Result** 메시지 유실 0건, 장애 상황에서도 예약 데이터 정합성 보장
 
-      **기타 성과**
+      **결제 · 인증 · 인프라**
 
-      - 스케일 아웃 환경의 스케줄러 중복 실행 문제를 **Redis 분산 락**으로 해결
-      - **KG이니시스 PG 연동 및 Kafka 기반 결제 승인 실패 재처리** 구현으로 결제 신뢰성 확보
+      - **KG이니시스 PG 연동 + Kafka 기반 결제 승인 실패 재처리**를 구현해 결제 신뢰성 확보
+      - 스케일 아웃 환경의 스케줄러 중복 실행을 **Redis 분산 락**으로 해소
       - 네이버·카카오·구글·애플 OAuth를 **전략 패턴**으로 통합, 신규 공급자 추가 비용 최소화
-      - AWS 로드밸런서 · Route 53 · staging / production 환경 구축
+      - AWS 로드밸런서 · Route 53 기반 staging / production 이중 환경 구축
 
       ---
 
       **PetPlay** · 반려동물 인플루언서 라이브 커머스 (2023.09 ~ 2024.06)
 
-      - 결제 **망 취소 · 환불 · 재시도 로직** 구현으로 결제 성공률 향상
-      - 6개 플랫폼(네이버·카카오·인스타·페이스북·틱톡·X) OAuth를 **전략 패턴**으로 단일 구조 통합
-      - 이미지 업로드 병목을 **AWS S3 Presigned URL** 방식으로 전환, 서버 부하 해소
+      - 결제 **망 취소 · 환불 · 재시도 로직**을 구현해 결제 실패 복구율 개선
+      - 6개 플랫폼(네이버·카카오·인스타·페이스북·틱톡·X) OAuth를 단일 인증 구조로 추상화
+      - 이미지 업로드 병목을 **AWS S3 Presigned URL** 방식으로 전환해 서버 부하 해소
       - 원고 컨펌 · 방문형 쿠폰 · 정산 API 신규 도메인 설계
 
       **협업**
@@ -175,9 +184,9 @@ experiences:
 
       **주요 성과**
 
-      - **MAU 1,000명 이상 · 누적 매출 $30,000** 확보
-      - 앱스토어·플레이스토어 출시, **GitHub Actions + Docker 기반 CI/CD** 직접 구축
-      - 신뢰성 있는 매칭을 위한 **스크리닝 기반 필터링 시스템** 설계·구현
+      - 앱스토어·플레이스토어 출시 후 **MAU 1,000+ · 누적 거래액 약 $30K** 규모로 성장
+      - **GitHub Actions + Docker 기반 CI/CD**를 직접 구축해 백엔드 단독 운영
+      - 신뢰도 높은 매칭을 위한 **스크리닝 기반 필터링 시스템** 설계·구현
 
       _Stack_: Spring · JPA · MySQL · Redis · Docker · GitHub Actions · AWS
 
