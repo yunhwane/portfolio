@@ -41,6 +41,16 @@
     break-inside: avoid;
   }
 
+  /* 콜아웃·불릿은 통째로, 제목은 페이지 끝에 고아로 남지 않게 */
+  .details blockquote,
+  .details li {
+    break-inside: avoid;
+  }
+  .section-title,
+  .job-title {
+    break-after: avoid;
+  }
+
   .skillset .level-bar-inner {
     background-color: $theme-color !important;
     -webkit-print-color-adjust: exact;

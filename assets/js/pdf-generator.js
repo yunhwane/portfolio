@@ -1,52 +1,13 @@
-function print() {
-  const printWindow = window.open("/print", "_blank");
-  printWindow.onload = function () {
-    printWindow.print();
-    // Close the print window after a delay
-    setTimeout(() => printWindow.close(), 500);
-  };
-}
-
-function generatePDF() {
-  // Get the print layout URL
-  const printURL = new URL("print", window.location.href).href;
-
-  // Fetch the print layout content
-  fetch(printURL)
-    .then((response) => response.text())
-    .then((html) => {
-      // Create a temporary container
-      const container = document.createElement("div");
-      container.innerHTML = html;
-
-      // Get name from the DOM (as defined in data.yml)
-      const name = document.querySelector(".name").textContent;
-      // Format filename: replace spaces with underscores and append _resume.pdf
-      const filename = `${name.replace(/\s+/g, "_")}_Resume.pdf`;
-
-      // Configure pdf options
-      const opt = {
-        margin: 10,
-        filename: filename,
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          letterRendering: true,
-        },
-        jsPDF: {
-          unit: "mm",
-          format: "a4",
-          orientation: "portrait",
-        },
-      };
-
-      // Generate PDF
-      html2pdf()
-        .set(opt)
-        .from(container)
-        .save()
-        .catch((err) => console.error("Error generating PDF:", err));
-    })
-    .catch((err) => console.error("Error fetching print layout:", err));
+// 전용 인쇄 레이아웃(/print)을 새 창에서 열고 브라우저 네이티브 인쇄로 출력한다.
+// 사용자는 인쇄 대화상자에서 "PDF로 저장"을 고르면 된다.
+// ponytail: 기존 html2pdf(html2canvas 래스터) 방식은 페이지 경계에서 글자가 잘리고
+//           이미지 기반이라 흐릿했음 — 네이티브 인쇄가 @media print를 따라 벡터로 정확히 분할.
+function printResume() {
+  const w = window.open("print.html", "_blank");
+  if (!w) return; // 팝업 차단 시
+  w.addEventListener("load", () => {
+    w.focus();
+    w.print();
+    w.addEventListener("afterprint", () => w.close());
+  });
 }
