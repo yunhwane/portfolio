@@ -57,21 +57,21 @@ sidebar:
 career-profile:
   title: About
   summary: |
-    **3년차 Java 백엔드 엔지니어 · 결제 도메인 & 분산 시스템 특화**
+    **3년차 Java 백엔드 엔지니어 · 결제 도메인 & 이벤트 기반 시스템**
 
-    서비스 초기 아키텍처 설계부터 런칭·운영까지 End-to-End로 책임져온 백엔드 개발자입니다.
-    **출시 당일 동시접속 2,000명을 장애 없이 처리**했고, KG이니시스 PG 연동과 Kafka 기반 결제 재처리,
-    **Transactional Outbox 패턴**으로 결제 정합성을 지켜왔습니다.
-    커버링 인덱스 설계로는 핵심 쿼리 응답을 **6.44s → 1.24s (80% 단축)** 개선했습니다.
+    서비스 초기 아키텍처·데이터 모델 설계부터 출시·운영까지 End-to-End로 책임져온 백엔드 개발자입니다.
+    신규 B2C 앱을 누적 회원 **15,000명 · MAU 1,000명** 규모로 성장시켰고, PG 연동·망취소·환불 로직으로 결제 안정성을,
+    Kafka·Redis 분산 락으로 이벤트 처리 정합성을 지켜왔습니다.
+    조회 구조 개선으로는 핵심 API 응답을 **6.44s → 1.24s (80% 단축)** 개선했습니다.
 
     "왜 이렇게 설계했는가"를 설명할 수 있는 코드를 지향하며, 기술 선택의 trade-off를
     팀에 설명하고 설득하는 일을 좋아합니다.
 
     **Core Strengths**
 
-    - **백엔드 · 아키텍처** — Spring Boot · JPA · Kafka/Redis 이벤트 기반 시스템
-    - **결제 · 분산 처리** — PG 연동 · Transactional Outbox · 분산 락 · 정합성 보장
-    - **성능 · 운영** — 쿼리 최적화 · Observability (Grafana + Loki) · AWS
+    - **백엔드 · 아키텍처** — Spring Boot · JPA/QueryDSL · Kafka/Redis 이벤트 기반 시스템
+    - **결제 · 분산 처리** — PG 연동 · 망취소/환불 · 분산 락 · 정합성 보장
+    - **품질 · 운영** — 테스트 문화(700+·커버리지 게이트) · Observability (Grafana + Loki) · AWS
 
 
 education:
@@ -91,44 +91,36 @@ experiences:
   info:
   - role: 주식회사 우리의이야기 — 백엔드 엔지니어
     time: 2025.07 - 현재
-    company: 서비스 "퍼플영" 런칭 · 백엔드 아키텍처 책임
+    company: 신규 B2C 앱 "퍼플영" 런칭 · 백엔드 아키텍처 책임
     details: |
-      > **[대표 성과]** 런칭 당일 **동시접속 2,000명 무장애 처리** — 캐시 히트율 **93%**, 장애 0건
-      > Caffeine 로컬 캐시 + 스케줄러 동기화로 병목 대응 · 스택 선정~도메인 API 설계 단독 리드
+      > **[대표 성과]** 신규 B2C 앱 백엔드를 초기 설계부터 단독 리드 — 누적 회원 **15,000명 · MAU 1,000명** 규모로 성장·운영
+      > 아키텍처·데이터 모델 설계 → 핵심 도메인 API 개발 → 앱 출시 → 배포·운영 전반 주도
 
-      - **OAuth2 / OIDC 인증·인가 설계**, JWT Stateless + Refresh Token Rotation 도입 (세션 부하 제거·토큰 탈취 완화)
-      - **AI 워크플로우 하네스 구축** — Jira 이슈 → 문서·코드 생성 → 코드 리뷰 자동화 파이프라인(Claude Code 멀티에이전트), **Code Review Agent** 직접 개발
-      - 테스트 **460개+ · 커버리지 70%** CI 자동화로 회귀 방지, Grafana + Loki 로깅 구조화
-      - **Kafka 도입 trade-off**를 팀에 설득해 이벤트 기반 아키텍처 채택 주도
+      - **테스트 문화 구축** — 테스트 작성·코드 리뷰 기준 정립, 핵심 도메인·API 대상 **단위·통합 테스트 700건+** 확보
+      - **JaCoCo 모듈별 커버리지 게이트**를 CI 검증에 적용 — Domain **50%**, API·Repository **25%** 이상 유지
+      - **2-Tier Cache** (Local + Redis)로 금지어 조회 DB 접근 최소화, **Redis Pub/Sub**으로 분산 환경 Local Cache 무효화해 정합성 확보
+      - **AI 개발 Harness 설계** — 컨텍스트 문서·ADR·작업 계획·테스트 시나리오·리뷰 절차로 요구사항 분석~구현·검증 워크플로우 팀 표준화
+      - **구조화 로깅** — MDC + Logstash Encoder, 요청별 Trace ID로 Loki·Grafana에서 사용자 요청·오류 흐름 검색·추적
 
-      _Stack_: Java · Spring Boot · PostgreSQL · OIDC · Caffeine · Grafana · Loki · Claude Code (Agent 파이프라인)
+      _Stack_: Java · Spring Boot · Spring Data JPA · QueryDSL · PostgreSQL · Redis · Kafka · JUnit 5 · Mockito · RestAssured · Testcontainers · JaCoCo · Loki · Grafana · Docker · AWS · GitHub Actions
 
   - role: 빅링크에이아이 — 백엔드 엔지니어
     time: 2023.09 - 2025.05
-    company: 결제 · 이벤트 기반 시스템 개발 (1년 9개월)
+    company: AI 기반 SNS 자동 포스팅 플랫폼 · 결제 · 이벤트 기반 시스템 (1년 9개월)
     details: |
-      AI 기반 SNS 자동 포스팅 플랫폼(BIGLINK)과 반려동물 라이브 커머스(PetPlay)에서
-      **결제 시스템 안정화**와 **이벤트 기반 아키텍처 도입**을 담당했습니다.
+      > **[회사 성과]** 교보생명 오픈 이노베이션 · 경기도 혁신 이노베이션 선정 · 창업 성장 기술 R&D 디딤돌·TIPS 선정 · 삼성전자 무선사업부 '삼성피켓' 공동 사업
+      > **[대표 성과]** 챗봇 프롬프트 조회 구조 개선으로 응답 속도 **6.44s → 1.24s (80% 단축)**
 
-      ---
+      - **SNS 자동 포스팅·예약 발행** (네이버 블로그·페이스북·인스타그램) 개발
+          - **Kafka 비동기 처리**로 예약 발행 데이터 안정 처리·정합성 확보
+          - **Redis 분산 락**으로 스케일아웃 환경에서 예약 작업 중복 실행 방지
+      - **결제 흐름 고도화** — 안정성·유지보수성 개선, 통신 장애 대응 **망취소·환불 로직** 구현
+      - **원고 컨펌 기능** (광고주↔인플루언서 작성·검수·수정 요청·승인) 개발
+          - **S3 Presigned URL** 기반 다중 이미지 직접 업로드 + **S3 Event·Lambda** 비동기 리사이징 파이프라인 설계
+          - **CloudFront CDN**으로 대용량 이미지 처리 부하 분산·제공 구조 개선
+      - **코드 리뷰 기준·PR 프로세스·테스트 작성 기준** 정립으로 팀 협업·코드 품질 관리 체계 개선
 
-      **BIGLINK** · AI 기반 SNS 자동 포스팅 (2024.06 ~ 2025.05)
-
-      > **[대표 성과 ①]** 챗봇 프롬프트 조회 **6.44s → 1.24s (80% 단축)** — EXPLAIN 분석 후 **커버링 인덱스** 적용
-      > **[대표 성과 ②]** **Transactional Outbox** 도입으로 메시지 유실 **0%** — DB 커밋·Kafka 발행 원자성 보장
-
-      - **KG이니시스 PG 연동 + Kafka 기반 결제 승인 실패 재처리**로 결제 신뢰성 확보
-      - 스케일 아웃 스케줄러 중복 실행을 **Redis 분산 락**으로 해소, OAuth 4종을 **전략 패턴**으로 통합
-
-      ---
-
-      **PetPlay** · 반려동물 라이브 커머스 (2023.09 ~ 2024.06)
-
-      - 결제 **망 취소 · 환불 · 재시도**로 실패 복구율 개선, **S3 Presigned URL**로 업로드 병목 해소
-      - 6개 플랫폼 OAuth를 단일 인증 구조로 추상화, 정산 · 쿠폰 등 신규 도메인 설계
-      - PO와 **우선순위 협의로 일정 내 릴리즈**, Outbox·분산 락 사례를 팀 기술 공유 세션에서 발표
-
-      _Stack_: Java · Spring Boot · MySQL · Kafka · Redis · AWS · JPA
+      _Stack_: Java · Spring Boot · Spring Data JPA · QueryDSL · PostgreSQL · Redis · Kafka · AWS S3 · Lambda · CloudFront · Docker · GitHub Actions
 
   - role: 그로스 헬퍼 — 사이드 프로젝트 (백엔드 단독)
     time: 2023.06 - 2024.06
@@ -207,10 +199,10 @@ skills:
 oss:
   title: Open Source Contributions
   intro: |
-    Keycloak · Valkey · Apache · Elastic · Trino · Hibernate 등 메이저 오픈소스의
+    Keycloak · Valkey · Apache Gravitino · Checkstyle · DSpace 등 메이저 오픈소스의
     Java 백엔드 코드베이스에 직접 기여했습니다. 대규모 코드베이스의 컨벤션을 빠르게 파악해
     **버그 수정 · 검증 로직 · CI/정적분석 · 테스트 보강** PR을 메인테이너 리뷰를 거쳐 머지시켰습니다.
-    (Merged 6 · In Review 3)
+    (Merged 6)
   contributions:
   # ── Merged ─────────────────────────────────────────────
   - title: Keycloak
@@ -243,22 +235,6 @@ oss:
     status: merged
     tagline: dspace-api 모듈의 빈 Javadoc 태그 일괄 정리 (2개 배치)
     meta: PR #12248, #12255 · Java
-  # ── In Review ──────────────────────────────────────────
-  - title: Elasticsearch
-    link: https://github.com/elastic/elasticsearch/pull/145405
-    status: open
-    tagline: search 요청 파싱 실패 시 에러 메시지 가독성 개선
-    meta: PR #145405 · Elastic · Search
-  - title: Trino
-    link: https://github.com/trinodb/trino/pull/28971
-    status: open
-    tagline: Ignite 커넥터의 음수 scale decimal 타입 처리 테스트 추가
-    meta: PR #28971 · Distributed SQL
-  - title: Hibernate Reactive
-    link: https://github.com/hibernate/hibernate-reactive/pull/3527
-    status: open
-    tagline: Hibernate ORM 6.3 세션 레벨 batch/subselect fetching API 검증 테스트
-    meta: PR #3527 · ORM
 
 
 footer: >

@@ -183,18 +183,33 @@ p {
   padding: 60px;
   .section-title {
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
     color: $text-color;
     position: relative;
     margin-top: 0;
-    margin-bottom: 24px;
-    padding-bottom: 10px;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
     border-bottom: 1px solid $divider;
+
+    // refresh.cv 느낌 — 원형 아이콘 배지 대신 옅은 글리프만
+    .fa-stack {
+      width: auto;
+      height: auto;
+      margin-right: 7px;
+      font-size: 0.62em;
+      vertical-align: middle;
+    }
+    .fa-circle {
+      display: none;
+    }
+    .fa-inverse {
+      color: $text-grey;
+    }
   }
   .section {
-    margin-bottom: 50px;
+    margin-bottom: 58px;
     &:last-child {
       margin-bottom: 0;
     }
