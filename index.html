@@ -1,24 +1,182 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>전윤환 · Backend Engineer</title>
+  <meta name="description" content="결제·분산 시스템을 초기 설계부터 운영까지 책임지는 백엔드 엔지니어 전윤환의 포트폴리오">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
 
+  <!-- Hero -->
+  <header class="hero">
+    <p class="eyebrow">Backend Engineer</p>
+    <h1>전윤환 <span class="latin">Yunhwane Jeon</span></h1>
+    <p class="lead">고객 중심의 제품 문제를 이해하고,<br>도메인 구조와 백엔드 아키텍처로 풀어내는<br>Java/Kotlin 백엔드 엔지니어입니다.</p>
+    <nav class="links">
+      <a href="mailto:wjsdbsghks96@naver.com">Email</a>
+      <a href="https://github.com/yunhwane" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
 
-{% include career-profile.html %}
+  <!-- About -->
+  <section id="about">
+    <h2>About</h2>
+    <div class="prose">
+      <p>인플루언서 마케팅 자동화 플랫폼(빅링크에이아이)부터 성형 모델 B2C 앱 ‘퍼플영’까지, <b>AI와 의료 도메인</b>에서 백엔드를 설계·운영해왔습니다. 기능을 빨리 쌓는 것보다, 고객이 실제로 겪는 문제의 <b>구조를 먼저 이해</b>하는 걸 중요하게 생각합니다.</p>
+      <p>성형외과 고객사와 직접 인터뷰하며 <span class="quote">“병원마다 강점 시술이 다른데 범용 카테고리로는 그 강점이 드러나지 않는다”</span>는 목소리를 들었고, 이를 <b>카테고리 구조 개선</b>으로 옮겼습니다. 이렇게 현장의 문제를 <b>도메인 모델과 백엔드 아키텍처</b>로 풀어내는 일을 합니다.</p>
+      <p>“왜 이렇게 설계했는가”를 설명할 수 있는 코드를 지향하며, 기술 선택의 trade-off를 팀에 설득하는 일을 좋아합니다.</p>
+      <ul class="tags">
+        <li>도메인 모델링</li>
+        <li>백엔드 아키텍처</li>
+        <li>Java · Kotlin · Spring</li>
+        <li>테스트 · Observability</li>
+      </ul>
+    </div>
+  </section>
 
-{% unless site.data.data.sidebar.education %}
-  {% include education.html %}
-{% endunless %}
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
 
-{% include experiences.html %}
+    <article class="entry">
+      <p class="period">2025.07 — 현재</p>
+      <h3>주식회사 우리의이야기 <span class="role">· 백엔드 엔지니어</span></h3>
+      <p class="summary">성형 모델 B2C 앱 ‘퍼플영’ 백엔드를 초기 설계부터 단독 리드 — 누적 회원 <b>15,000명 · MAU 1,000명</b> 규모로 성장·운영. 아키텍처·데이터 모델 설계.</p>
 
-{% include oss-contributions.html %}
+      <div class="feature">
+        <p class="feature-title">성형·미용의료 카테고리 도메인 구조 재정리</p>
+        <p><span class="lbl">문제</span> 고객사 인터뷰에서 “병원마다 강점 시술이 다른데 범용 카테고리로는 그 강점이 드러나지 않는다”</p>
+        <p><span class="lbl">해결</span> 진료/시술 카테고리의 도메인 구조를 재정리하고, 카테고리 계층·정렬·노출 기준을 개선 (범용 구조 대신 도메인에 맞춘 계층)</p>
+        <p><span class="lbl">결과</span> 사용자 탐색 경험과 운영자의 관리 편의성을 함께 개선</p>
+      </div>
 
-{% include certifications.html %}
+      <div class="feature">
+        <p class="feature-title">공통 코드·카테고리 2-Tier 캐시 (Local + Redis)</p>
+        <p><span class="lbl">문제</span> 각 서버 인스턴스가 공통 코드·카테고리를 로컬 캐시로만 들고 있어, 스케일아웃되면서 인스턴스마다 캐시가 중복 적재되고 인스턴스 간 정합성이 깨짐 (한 곳에서 수정해도 다른 인스턴스는 옛 데이터 유지)</p>
+        <p><span class="lbl">해결</span> Redis를 상위 캐시로 도입해 로컬 캐시가 Redis만 바라보도록 설계. 실시간성이 필요 없는 데이터라 로컬 캐시는 Redis를 1~2분 TTL로 조회하고, 수정/삭제 시 Redis Pub/Sub로 전 인스턴스에 무효화를 전파 (메모리 중복 ↔ 조회 정합성 트레이드오프 관리)</p>
+        <p><span class="lbl">결과</span> 공통 코드·카테고리 조회의 DB 접근을 제거해 slow query를 해소하고, 스케일아웃 환경에서도 인스턴스 간 정합성과 일관된 응답 확보</p>
+      </div>
 
-{% include projects.html %}
+      <div class="feature">
+        <p class="feature-title">테스트 케이스를 요구사항·AI 검증의 공통 기준으로</p>
+        <p><span class="lbl">문제</span> 요구사항 검증이 리뷰어의 주관·경험에 의존했고, AI 개발 도구의 산출물도 일관된 합격 기준 없이 검토됨</p>
+        <p><span class="lbl">해결</span> 테스트 케이스를 “요구사항의 실행 가능한 명세”로 정의하고, 코드 리뷰와 AI 개발 하네스가 동일한 테스트를 검증 기준으로 공유하도록 표준화</p>
+        <p><span class="lbl">결과</span> 사람·AI 관계없이 같은 기준으로 검증, 요구사항 분석~구현~검증 워크플로우의 일관성 확보</p>
+      </div>
 
-{% include publications.html %}
+      <ul>
+        <li><b>금지어 필터링 시스템 설계·구축</b> — 아호-코라식(Aho-Corasick) 다중 패턴 매칭 구현, JMeter로 <b>10만 동시 요청</b> 부하 테스트를 거쳐 개발.</li>
+        <li><b>구조화 로깅</b> — MDC 기반 Trace ID와 구조화 로그를 적용, Loki/Grafana에서 요청 단위 로그를 추적하도록 운영 가시성 개선.</li>
+        <li><b>테스트 작성</b> — JUnit5·RestAssured 기반 단위·통합 테스트 작성.</li>
+      </ul>
 
-{% include recommendations.html %}
+      <p class="stack">Java · Spring Boot · JPA · QueryDSL · PostgreSQL · Redis · Kafka · JUnit5 · RestAssured · Loki · Grafana · AWS</p>
+    </article>
 
-{% include skills.html %}
+    <article class="entry">
+      <p class="period">2023.09 — 2025.05</p>
+      <h3>빅링크에이아이 <span class="role">· 백엔드 엔지니어</span></h3>
+      <p class="summary">인플루언서 마케팅 자동화 플랫폼. 결제·이벤트 기반 시스템 개발 (1년 9개월).</p>
+
+      <div class="feature">
+        <p class="feature-title">챗봇 프롬프트 데이터 구조 개선 (6.44s → 1.24s, 80%↓)</p>
+        <p><span class="lbl">문제</span> 챗봇 프롬프트 조회 응답이 평균 6.44s로 사용자 이탈을 유발하는 핵심 병목</p>
+        <p><span class="lbl">해결</span> 실행 계획 분석으로 인덱스 비효율을 병목으로 특정, 프롬프트 조회의 데이터 구조와 인덱스를 재설계(커버링 인덱스 전환·쿼리 튜닝)해 테이블 접근 제거 (단순 캐싱 대신 근본 원인 해소)</p>
+        <p><span class="lbl">결과</span> 6.44s → 1.24s, 80% 단축 측정 검증</p>
+      </div>
+
+      <ul>
+        <li><b>테스트 기반 마련</b> — 기존 테스트가 거의 없는 상태에서 핵심 도메인과 API 흐름을 중심으로 단위·통합 테스트를 작성하고 작성 기준을 정리, 변경 시 회귀를 방지할 기반을 마련.</li>
+        <li><b>예약 발행</b> — 네이버·티스토리·인스타그램·페이스북 예약 발행 서비스 개발. Kafka 비동기 + Redis 분산 락으로 스케일아웃 환경의 중복 실행·유실 방지.</li>
+        <li><b>결제 흐름 설계</b> — KG 이니시스 결제 승인·망취소·환불 등 핵심 흐름은 동기로 처리하되, 결제 이후 알림·상태 변경·후속 처리를 이벤트 기반으로 분리해 결제 모듈의 책임과 확장성 개선.</li>
+        <li><b>팀 협업 체계</b> — 코드 리뷰 기준·PR 프로세스 정립으로 팀 협업·코드 품질 체계 개선.</li>
+      </ul>
+
+      <p class="stack">Java · Spring Boot · JPA · QueryDSL · PostgreSQL · Redis · Kafka · JUnit5 · RestAssured · Docker · GitHub Actions</p>
+    </article>
+
+    <article class="entry">
+      <p class="period">2023.06 — 2024.06</p>
+      <h3>그로스 헬퍼 <span class="role">· 사이드 프로젝트 (백엔드 단독)</span></h3>
+      <p class="summary">설문/인터뷰 매칭 플랫폼을 기획 단계부터 참여, 백엔드를 단독 설계·개발·운영. <a href="https://github.com/GrowthHelper-Intermission" target="_blank" rel="noopener">GitHub Org ↗</a></p>
+      <ul>
+        <li>앱스토어·플레이스토어 출시 후 <b>MAU 1,000+ · 누적 거래액 약 $30K</b>.</li>
+        <li>GitHub Actions + Docker 기반 CI/CD 직접 구축, 백엔드 단독 운영.</li>
+        <li>신뢰도 높은 매칭을 위한 스크리닝 기반 필터링 시스템 설계·구현.</li>
+      </ul>
+      <p class="stack">Spring · JPA · MySQL · Redis · Docker · GitHub Actions · AWS</p>
+    </article>
+
+  </section>
+
+  <!-- Open Source -->
+  <section id="opensource">
+    <h2>Open Source</h2>
+    <p class="prose">Keycloak · Valkey · Apache Gravitino · Checkstyle · DSpace 등 메이저 오픈소스에 버그 수정·검증 로직·CI/정적분석·테스트 보강 PR을 기여, 메인테이너 리뷰를 거쳐 <b>6건 머지</b>했습니다.</p>
+    <ul class="oss">
+      <li>
+        <a href="https://github.com/keycloak/keycloak/pull/47684" target="_blank" rel="noopener"><b>Keycloak</b> <span>#47684</span></a>
+        <p>빈 값·잘못된 OIDC 속성에서 발생하던 NumberFormatException 수정 (인증 흐름 안정화)</p>
+      </li>
+      <li>
+        <a href="https://github.com/valkey-io/valkey-glide/pull/5687" target="_blank" rel="noopener"><b>Valkey GLIDE</b> <span>#5687</span></a>
+        <p>Java 린트 파이프라인에 Checkstyle 도입 — 전 서브프로젝트 적용, import 규칙 위반 18개 파일 정비</p>
+      </li>
+      <li>
+        <a href="https://github.com/apache/gravitino/pull/10663" target="_blank" rel="noopener"><b>Apache Gravitino</b> <span>#10663</span></a>
+        <p>모델 버전 요청 검증을 try 블록 안으로 이동해 예외 처리 정합성 개선</p>
+      </li>
+      <li>
+        <a href="https://github.com/checkstyle/checkstyle/pull/19577" target="_blank" rel="noopener"><b>Checkstyle</b> <span>#19576 · 19577</span></a>
+        <p>Javadoc 관련 Check의 기본 프로퍼티 정비 (MissingJavadocType · JavadocContentLocation)</p>
+      </li>
+      <li>
+        <a href="https://github.com/DSpace/DSpace/pull/12255" target="_blank" rel="noopener"><b>DSpace</b> <span>#12248 · 12255</span></a>
+        <p>dspace-api 모듈의 빈 Javadoc 태그 일괄 정리 (2개 배치)</p>
+      </li>
+      <li>
+        <a href="https://github.com/harnessworks/harness-starter-kit/pull/39" target="_blank" rel="noopener"><b>harness-starter-kit</b> <span>#39 · 42</span></a>
+        <p>AI 코딩 에이전트 검증 하네스에 Rust 스택 프로필 추가, Go fixture 빌드/툴체인 경로 검증 보강</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="rows">
+      <dt>Primary</dt>
+      <dd>Java · Kotlin · Spring Boot · JPA · QueryDSL · MySQL · PostgreSQL</dd>
+      <dt>Proficient</dt>
+      <dd>Kafka · Redis · 분산 락 · Caffeine · OAuth2 · OIDC · JWT · AWS (EC2 · RDS · S3 · ELB · Route 53)</dd>
+      <dt>Familiar</dt>
+      <dd>Grafana · Loki · Observability · Docker · GitHub Actions</dd>
+    </dl>
+  </section>
+
+  <!-- Education & Certifications -->
+  <section id="background">
+    <h2>Education &amp; Certifications</h2>
+    <dl class="rows">
+      <dt>Education</dt>
+      <dd>동국대학교(서울) 산업시스템공학 편입 · 졸업 예정<br>한국교통대학교 산업공학과 (2015.03 – 2018.03)</dd>
+      <dt>Certifications</dt>
+      <dd>SQL 개발자(SQLD) · 한국데이터베이스진흥센터 (2022.12)<br>창업동아리 우수상</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:wjsdbsghks96@naver.com">wjsdbsghks96@naver.com</a>
+      <a href="https://github.com/yunhwane" target="_blank" rel="noopener">github.com/yunhwane</a>
+    </div>
+    <p>© 2026 전윤환 · Yunhwane Jeon</p>
+  </footer>
+
+</main>
+</body>
+</html>
