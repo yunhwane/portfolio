@@ -57,7 +57,7 @@
       <div class="feature">
         <p class="feature-title">공통 코드·카테고리 2-Tier 캐시 (Local + Redis)</p>
         <p><span class="lbl">문제</span> 각 서버 인스턴스가 공통 코드·카테고리를 로컬 캐시로만 들고 있어, 스케일아웃되면서 인스턴스마다 캐시가 중복 적재되고 인스턴스 간 정합성이 깨짐 (한 곳에서 수정해도 다른 인스턴스는 옛 데이터 유지)</p>
-        <p><span class="lbl">해결</span> Redis를 상위 캐시로 도입해 로컬 캐시가 Redis만 바라보도록 설계. 실시간성이 필요 없는 데이터라 로컬 캐시는 Redis를 1~2분 TTL로 조회하고, 수정/삭제 시 Redis Pub/Sub로 전 인스턴스에 무효화를 전파 (메모리 중복 ↔ 조회 정합성 트레이드오프 관리)</p>
+        <p><span class="lbl">해결</span> Redis를 상위 캐시로 도입해 로컬 캐시가 Redis만 바라보도록 설계. 수정·삭제 시 Redis Pub/Sub로 전 인스턴스의 로컬 캐시를 즉시 무효화해 정합성을 맞추고, TTL(1~2분)은 이벤트 유실에 대비한 안전장치로만 사용 (메모리 중복 ↔ 조회 정합성 트레이드오프 관리)</p>
         <p><span class="lbl">결과</span> 공통 코드·카테고리 조회의 DB 접근을 제거해 slow query를 해소하고, 스케일아웃 환경에서도 인스턴스 간 정합성과 일관된 응답 확보</p>
       </div>
 
@@ -71,7 +71,7 @@
       <ul>
         <li><b>금지어 필터링 시스템 설계·구축</b> — 아호-코라식(Aho-Corasick) 다중 패턴 매칭 구현, JMeter로 <b>10만 동시 요청</b> 부하 테스트를 거쳐 개발.</li>
         <li><b>구조화 로깅</b> — MDC 기반 Trace ID와 구조화 로그를 적용, Loki/Grafana에서 요청 단위 로그를 추적하도록 운영 가시성 개선.</li>
-        <li><b>테스트 작성</b> — JUnit5·RestAssured 기반 단위·통합 테스트 작성.</li>
+        <li><b>테스트 작성</b> — JUnit5·RestAssured 기반 단위·통합 테스트 <b>700여 건</b>을 작성, 핵심 도메인 로직과 API 응답을 검증 대상으로 삼아 회귀를 방지.</li>
       </ul>
 
       <p class="stack">Java · Spring Boot · JPA · QueryDSL · PostgreSQL · Redis · Kafka · JUnit5 · RestAssured · Loki · Grafana · AWS</p>
@@ -86,7 +86,7 @@
         <p class="feature-title">챗봇 프롬프트 데이터 구조 개선 (6.44s → 1.24s, 80%↓)</p>
         <p><span class="lbl">문제</span> 챗봇 프롬프트 조회 응답이 평균 6.44s로 사용자 이탈을 유발하는 핵심 병목</p>
         <p><span class="lbl">해결</span> 실행 계획 분석으로 인덱스 비효율을 병목으로 특정, 프롬프트 조회의 데이터 구조와 인덱스를 재설계(커버링 인덱스 전환·쿼리 튜닝)해 테이블 접근 제거 (단순 캐싱 대신 근본 원인 해소)</p>
-        <p><span class="lbl">결과</span> 6.44s → 1.24s, 80% 단축 측정 검증</p>
+        <p><span class="lbl">결과</span> 6.44s → 1.24s로 80% 단축, 측정으로 검증</p>
       </div>
 
       <ul>
