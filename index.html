@@ -71,6 +71,18 @@
   .meta a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
   .meta a:hover { color: var(--fg); border-bottom-color: var(--fg); }
 
+  .meta button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .meta button:hover { color: var(--fg); border-bottom-color: var(--fg); }
+
   /* ---------- sections ---------- */
   section { margin-bottom: 72px; }
 
@@ -261,6 +273,57 @@
     color: var(--muted);
   }
 
+  /* ---------- print ---------- */
+  @page {
+    size: A4;
+    margin: 14mm 14mm 16mm;
+  }
+
+  @media print {
+    /* 다크 모드에서 인쇄해도 항상 흰 배경·검은 글씨 */
+    :root {
+      --bg: #ffffff;
+      --fg: #1a1a1a;
+      --muted: #5c5c5c;
+      --line: #d4d4d4;
+      --accent: #1a1a1a;
+    }
+
+    body { font-size: 10pt; line-height: 1.55; }
+
+    .wrap { max-width: none; padding: 0; }
+
+    .print-hide { display: none; }
+
+    header { margin-bottom: 32px; }
+    h1 { font-size: 1.75rem; }
+    section { margin-bottom: 28px; }
+    h2 { margin-bottom: 16px; padding-bottom: 8px; }
+    .item { margin-bottom: 20px; }
+    .case { margin-top: 16px; padding-top: 14px; }
+
+    /* 페이지 경계에서 잘리면 안 되는 최소 단위만 묶는다.
+       .item이나 .case 전체를 묶으면 긴 블록이 통째로 밀리면서 앞 페이지에 큰 공백이 남는다.
+       그래서 문단(dd·li) 단위로만 묶고, 제목은 뒤따르는 내용과 붙여둔다. */
+    .os, .figure, blockquote, .tags { break-inside: avoid; }
+    .case-body dd, .case-body dt, .item li { break-inside: avoid; }
+    .item-head, .case-head { break-inside: avoid; break-after: avoid; }
+    .item-sub { break-after: avoid; }
+    h1, h2, h3 { break-after: avoid; }
+
+    a { border-bottom: none; }
+
+    /* 링크 주소가 종이에 남도록 */
+    .meta a[href^="http"]::after,
+    .item-sub a[href^="http"]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      color: var(--muted);
+    }
+
+    .figure img { max-height: 90mm; width: auto; max-width: 100%; }
+  }
+
   @media (max-width: 560px) {
     .wrap { padding: 64px 20px 88px; }
     h1 { font-size: 1.875rem; }
@@ -287,6 +350,7 @@
       <span>1996.03.20</span>
       <a href="mailto:wjsdbsghks96@naver.com">wjsdbsghks96@naver.com</a>
       <a href="https://github.com/yunhwane" target="_blank" rel="noopener">github.com/yunhwane</a>
+      <button type="button" class="print-hide" onclick="window.print()">PDF로 저장</button>
     </div>
   </header>
 
