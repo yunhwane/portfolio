@@ -1,182 +1,935 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>전윤환 · Backend Engineer</title>
-  <meta name="description" content="결제·분산 시스템을 초기 설계부터 운영까지 책임지는 백엔드 엔지니어 전윤환의 포트폴리오">
-  <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전윤환 · Backend Engineer</title>
+<meta name="description" content="고객 중심의 제품 문제를 도메인 구조와 백엔드 아키텍처로 풀어내는 Java/Kotlin 백엔드 엔지니어 전윤환의 포트폴리오">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #767676;
+    --line: #e5e5e5;
+    --accent: #1a1a1a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111111;
+      --fg: #ededed;
+      --muted: #8f8f8f;
+      --line: #2a2a2a;
+      --accent: #ededed;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont,
+                 "Apple SD Gothic Neo", "Segoe UI", "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 96px 24px 128px;
+  }
+
+  /* ---------- header ---------- */
+  header { margin-bottom: 88px; }
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .tagline {
+    font-size: 1.0625rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .meta a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
+  .meta a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+
+  /* ---------- sections ---------- */
+  section { margin-bottom: 72px; }
+
+  h2 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 14px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .item { margin-bottom: 36px; }
+  .item:last-child { margin-bottom: 0; }
+
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 4px;
+  }
+
+  .item-title { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.01em; }
+
+  .item-date {
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .item-sub { font-size: 0.9375rem; color: var(--muted); margin-bottom: 12px; }
+  .item-sub a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
+  .item-sub a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+
+  .item ul { list-style: none; }
+
+  .item li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 6px;
+    font-size: 0.9375rem;
+  }
+
+  .item li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 4px;
+    height: 1px;
+    background: var(--muted);
+  }
+
+  /* ---------- case study ---------- */
+  .case {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    margin-top: 24px;
+  }
+
+  .case-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .case-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .case-metric {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .case-body {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 14px 20px;
+  }
+
+  .case-body dt {
+    grid-column: 1;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    padding-top: 0.28em;
+    white-space: nowrap;
+  }
+
+  .case-body dd {
+    grid-column: 2;
+    font-size: 0.9375rem;
+  }
+
+  /* ---------- prose ---------- */
+  .prose p { margin-bottom: 14px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose b { font-weight: 600; }
+
+  .prose blockquote {
+    margin: 18px 0;
+    padding-left: 16px;
+    border-left: 2px solid var(--line);
+    color: var(--muted);
+  }
+
+  /* ---------- open source ---------- */
+  .os {
+    display: grid;
+    grid-template-columns: 152px 1fr;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .os:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .os-repo { font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.01em; }
+
+  .os-prs { margin-top: 2px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .os-prs a {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-variant-numeric: tabular-nums;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .os-prs a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+
+  .os-desc { font-size: 0.9375rem; }
+
+  .os-intro { font-size: 0.9375rem; margin-bottom: 8px; }
+
+  .figure { margin-top: 20px; }
+
+  .figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #fff;
+  }
+
+  .figure figcaption {
+    margin-top: 8px;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+
+  .tag {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 2px 9px;
+  }
+
+  /* ---------- placeholder ---------- */
+  .todo {
+    border: 1px dashed var(--line);
+    border-radius: 6px;
+    padding: 24px;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  footer {
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 64px 20px 88px; }
+    h1 { font-size: 1.875rem; }
+    .item-head { flex-direction: column; gap: 2px; }
+    .os { grid-template-columns: 1fr; gap: 8px; }
+    .case-head { flex-direction: column; gap: 4px; }
+    .case-body { grid-template-columns: 1fr; gap: 6px; }
+    .case-body dt, .case-body dd { grid-column: 1; }
+    .case-body dt { padding-top: 8px; }
+    .case-body dt:first-child { padding-top: 0; }
+  }
+</style>
 </head>
 <body>
-<main>
+<div class="wrap">
 
-  <!-- Hero -->
-  <header class="hero">
-    <p class="eyebrow">Backend Engineer</p>
-    <h1>전윤환 <span class="latin">Yunhwane Jeon</span></h1>
-    <p class="lead">고객 중심의 제품 문제를 이해하고,<br>도메인 구조와 백엔드 아키텍처로 풀어내는<br>Java/Kotlin 백엔드 엔지니어입니다.</p>
-    <nav class="links">
-      <a href="mailto:wjsdbsghks96@naver.com">Email</a>
-      <a href="https://github.com/yunhwane" target="_blank" rel="noopener">GitHub</a>
-    </nav>
-  </header>
-
-  <!-- About -->
-  <section id="about">
-    <h2>About</h2>
-    <div class="prose">
-      <p>인플루언서 마케팅 자동화 플랫폼(빅링크에이아이)부터 성형 모델 B2C 앱 ‘퍼플영’까지, <b>AI와 의료 도메인</b>에서 백엔드를 설계·운영해왔습니다. 기능을 빨리 쌓는 것보다, 고객이 실제로 겪는 문제의 <b>구조를 먼저 이해</b>하는 걸 중요하게 생각합니다.</p>
-      <p>성형외과 고객사와 직접 인터뷰하며 <span class="quote">“병원마다 강점 시술이 다른데 범용 카테고리로는 그 강점이 드러나지 않는다”</span>는 목소리를 들었고, 이를 <b>카테고리 구조 개선</b>으로 옮겼습니다. 이렇게 현장의 문제를 <b>도메인 모델과 백엔드 아키텍처</b>로 풀어내는 일을 합니다.</p>
-      <p>“왜 이렇게 설계했는가”를 설명할 수 있는 코드를 지향하며, 기술 선택의 trade-off를 팀에 설득하는 일을 좋아합니다.</p>
-      <ul class="tags">
-        <li>도메인 모델링</li>
-        <li>백엔드 아키텍처</li>
-        <li>Java · Kotlin · Spring</li>
-        <li>테스트 · Observability</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience">
-    <h2>Experience</h2>
-
-    <article class="entry">
-      <p class="period">2025.07 — 현재</p>
-      <h3>주식회사 우리의이야기 <span class="role">· 백엔드 엔지니어</span></h3>
-      <p class="summary">성형 모델 B2C 앱 ‘퍼플영’ 백엔드를 초기 설계부터 단독 리드 — 누적 회원 <b>15,000명 · MAU 1,000명</b> 규모로 성장·운영. 아키텍처·데이터 모델 설계.</p>
-
-      <div class="feature">
-        <p class="feature-title">성형·미용의료 카테고리 도메인 구조 재정리</p>
-        <p><span class="lbl">문제</span> 고객사 인터뷰에서 “병원마다 강점 시술이 다른데 범용 카테고리로는 그 강점이 드러나지 않는다”</p>
-        <p><span class="lbl">해결</span> 진료/시술 카테고리의 도메인 구조를 재정리하고, 카테고리 계층·정렬·노출 기준을 개선 (범용 구조 대신 도메인에 맞춘 계층)</p>
-        <p><span class="lbl">결과</span> 사용자 탐색 경험과 운영자의 관리 편의성을 함께 개선</p>
-      </div>
-
-      <div class="feature">
-        <p class="feature-title">공통 코드·카테고리 2-Tier 캐시 (Local + Redis)</p>
-        <p><span class="lbl">문제</span> 각 서버 인스턴스가 공통 코드·카테고리를 로컬 캐시로만 들고 있어, 스케일아웃되면서 인스턴스마다 캐시가 중복 적재되고 인스턴스 간 정합성이 깨짐 (한 곳에서 수정해도 다른 인스턴스는 옛 데이터 유지)</p>
-        <p><span class="lbl">해결</span> Redis를 상위 캐시로 도입해 로컬 캐시가 Redis만 바라보도록 설계. 수정·삭제 시 Redis Pub/Sub로 전 인스턴스의 로컬 캐시를 즉시 무효화해 정합성을 맞추고, TTL(1~2분)은 이벤트 유실에 대비한 안전장치로만 사용 (메모리 중복 ↔ 조회 정합성 트레이드오프 관리)</p>
-        <p><span class="lbl">결과</span> 공통 코드·카테고리 조회의 DB 접근을 제거해 slow query를 해소하고, 스케일아웃 환경에서도 인스턴스 간 정합성과 일관된 응답 확보</p>
-      </div>
-
-      <div class="feature">
-        <p class="feature-title">테스트 케이스를 요구사항·AI 검증의 공통 기준으로</p>
-        <p><span class="lbl">문제</span> 요구사항 검증이 리뷰어의 주관·경험에 의존했고, AI 개발 도구의 산출물도 일관된 합격 기준 없이 검토됨</p>
-        <p><span class="lbl">해결</span> 테스트 케이스를 “요구사항의 실행 가능한 명세”로 정의하고, 코드 리뷰와 AI 개발 하네스가 동일한 테스트를 검증 기준으로 공유하도록 표준화</p>
-        <p><span class="lbl">결과</span> 사람·AI 관계없이 같은 기준으로 검증, 요구사항 분석~구현~검증 워크플로우의 일관성 확보</p>
-      </div>
-
-      <ul>
-        <li><b>금지어 필터링 시스템 설계·구축</b> — 아호-코라식(Aho-Corasick) 다중 패턴 매칭 구현, JMeter로 <b>10만 동시 요청</b> 부하 테스트를 거쳐 개발.</li>
-        <li><b>구조화 로깅</b> — MDC 기반 Trace ID와 구조화 로그를 적용, Loki/Grafana에서 요청 단위 로그를 추적하도록 운영 가시성 개선.</li>
-        <li><b>테스트 작성</b> — JUnit5·RestAssured 기반 단위·통합 테스트 <b>700여 건</b>을 작성, 핵심 도메인 로직과 API 응답을 검증 대상으로 삼아 회귀를 방지.</li>
-      </ul>
-
-      <p class="stack">Java · Spring Boot · JPA · QueryDSL · PostgreSQL · Redis · Kafka · JUnit5 · RestAssured · Loki · Grafana · AWS</p>
-    </article>
-
-    <article class="entry">
-      <p class="period">2023.09 — 2025.05</p>
-      <h3>빅링크에이아이 <span class="role">· 백엔드 엔지니어</span></h3>
-      <p class="summary">인플루언서 마케팅 자동화 플랫폼. 결제·이벤트 기반 시스템 개발 (1년 9개월).</p>
-
-      <div class="feature">
-        <p class="feature-title">챗봇 프롬프트 데이터 구조 개선 (6.44s → 1.24s, 80%↓)</p>
-        <p><span class="lbl">문제</span> 챗봇 프롬프트 조회 응답이 평균 6.44s로 사용자 이탈을 유발하는 핵심 병목</p>
-        <p><span class="lbl">해결</span> 실행 계획 분석으로 인덱스 비효율을 병목으로 특정, 프롬프트 조회의 데이터 구조와 인덱스를 재설계(커버링 인덱스 전환·쿼리 튜닝)해 테이블 접근 제거 (단순 캐싱 대신 근본 원인 해소)</p>
-        <p><span class="lbl">결과</span> 6.44s → 1.24s로 80% 단축, 측정으로 검증</p>
-      </div>
-
-      <ul>
-        <li><b>테스트 기반 마련</b> — 기존 테스트가 거의 없는 상태에서 핵심 도메인과 API 흐름을 중심으로 단위·통합 테스트를 작성하고 작성 기준을 정리, 변경 시 회귀를 방지할 기반을 마련.</li>
-        <li><b>예약 발행</b> — 네이버·티스토리·인스타그램·페이스북 예약 발행 서비스 개발. Kafka 비동기 + Redis 분산 락으로 스케일아웃 환경의 중복 실행·유실 방지.</li>
-        <li><b>결제 흐름 설계</b> — KG 이니시스 결제 승인·망취소·환불 등 핵심 흐름은 동기로 처리하되, 결제 이후 알림·상태 변경·후속 처리를 이벤트 기반으로 분리해 결제 모듈의 책임과 확장성 개선.</li>
-        <li><b>팀 협업 체계</b> — 코드 리뷰 기준·PR 프로세스 정립으로 팀 협업·코드 품질 체계 개선.</li>
-      </ul>
-
-      <p class="stack">Java · Spring Boot · JPA · QueryDSL · PostgreSQL · Redis · Kafka · JUnit5 · RestAssured · Docker · GitHub Actions</p>
-    </article>
-
-    <article class="entry">
-      <p class="period">2023.06 — 2024.06</p>
-      <h3>그로스 헬퍼 <span class="role">· 사이드 프로젝트 (백엔드 단독)</span></h3>
-      <p class="summary">설문/인터뷰 매칭 플랫폼을 기획 단계부터 참여, 백엔드를 단독 설계·개발·운영. <a href="https://github.com/GrowthHelper-Intermission" target="_blank" rel="noopener">GitHub Org ↗</a></p>
-      <ul>
-        <li>앱스토어·플레이스토어 출시 후 <b>MAU 1,000+ · 누적 거래액 약 $30K</b>.</li>
-        <li>GitHub Actions + Docker 기반 CI/CD 직접 구축, 백엔드 단독 운영.</li>
-        <li>신뢰도 높은 매칭을 위한 스크리닝 기반 필터링 시스템 설계·구현.</li>
-      </ul>
-      <p class="stack">Spring · JPA · MySQL · Redis · Docker · GitHub Actions · AWS</p>
-    </article>
-
-  </section>
-
-  <!-- Open Source -->
-  <section id="opensource">
-    <h2>Open Source</h2>
-    <p class="prose">Keycloak · Valkey · Apache Gravitino · Checkstyle · DSpace 등 메이저 오픈소스에 버그 수정·검증 로직·CI/정적분석·테스트 보강 PR을 기여, 메인테이너 리뷰를 거쳐 <b>6건 머지</b>했습니다.</p>
-    <ul class="oss">
-      <li>
-        <a href="https://github.com/keycloak/keycloak/pull/47684" target="_blank" rel="noopener"><b>Keycloak</b> <span>#47684</span></a>
-        <p>빈 값·잘못된 OIDC 속성에서 발생하던 NumberFormatException 수정 (인증 흐름 안정화)</p>
-      </li>
-      <li>
-        <a href="https://github.com/valkey-io/valkey-glide/pull/5687" target="_blank" rel="noopener"><b>Valkey GLIDE</b> <span>#5687</span></a>
-        <p>Java 린트 파이프라인에 Checkstyle 도입 — 전 서브프로젝트 적용, import 규칙 위반 18개 파일 정비</p>
-      </li>
-      <li>
-        <a href="https://github.com/apache/gravitino/pull/10663" target="_blank" rel="noopener"><b>Apache Gravitino</b> <span>#10663</span></a>
-        <p>모델 버전 요청 검증을 try 블록 안으로 이동해 예외 처리 정합성 개선</p>
-      </li>
-      <li>
-        <a href="https://github.com/checkstyle/checkstyle/pull/19577" target="_blank" rel="noopener"><b>Checkstyle</b> <span>#19576 · 19577</span></a>
-        <p>Javadoc 관련 Check의 기본 프로퍼티 정비 (MissingJavadocType · JavadocContentLocation)</p>
-      </li>
-      <li>
-        <a href="https://github.com/DSpace/DSpace/pull/12255" target="_blank" rel="noopener"><b>DSpace</b> <span>#12248 · 12255</span></a>
-        <p>dspace-api 모듈의 빈 Javadoc 태그 일괄 정리 (2개 배치)</p>
-      </li>
-      <li>
-        <a href="https://github.com/harnessworks/harness-starter-kit/pull/39" target="_blank" rel="noopener"><b>harness-starter-kit</b> <span>#39 · 42</span></a>
-        <p>AI 코딩 에이전트 검증 하네스에 Rust 스택 프로필 추가, Go fixture 빌드/툴체인 경로 검증 보강</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <dl class="rows">
-      <dt>Primary</dt>
-      <dd>Java · Kotlin · Spring Boot · JPA · QueryDSL · MySQL · PostgreSQL</dd>
-      <dt>Proficient</dt>
-      <dd>Kafka · Redis · 분산 락 · Caffeine · OAuth2 · OIDC · JWT · AWS (EC2 · RDS · S3 · ELB · Route 53)</dd>
-      <dt>Familiar</dt>
-      <dd>Grafana · Loki · Observability · Docker · GitHub Actions</dd>
-    </dl>
-  </section>
-
-  <!-- Education & Certifications -->
-  <section id="background">
-    <h2>Education &amp; Certifications</h2>
-    <dl class="rows">
-      <dt>Education</dt>
-      <dd>동국대학교(서울) 산업시스템공학 편입 · 졸업 예정<br>한국교통대학교 산업공학과 (2015.03 – 2018.03)</dd>
-      <dt>Certifications</dt>
-      <dd>SQL 개발자(SQLD) · 한국데이터베이스진흥센터 (2022.12)<br>창업동아리 우수상</dd>
-    </dl>
-  </section>
-
-  <footer>
-    <div class="footer-links">
+  <header>
+    <h1>전윤환</h1>
+    <p class="tagline">
+      고객 중심의 제품 문제를 도메인 구조와 백엔드 아키텍처로 풀어내는
+      Java/Kotlin 백엔드 엔지니어입니다.
+    </p>
+    <div class="meta">
+      <span>1996.03.20</span>
       <a href="mailto:wjsdbsghks96@naver.com">wjsdbsghks96@naver.com</a>
       <a href="https://github.com/yunhwane" target="_blank" rel="noopener">github.com/yunhwane</a>
     </div>
-    <p>© 2026 전윤환 · Yunhwane Jeon</p>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <div class="prose">
+      <p>
+        인플루언서 마케팅 자동화 플랫폼(빅링크 AI)부터 성형 모델 B2C 앱 ‘퍼플영’까지,
+        AI와 의료 도메인에서 백엔드를 설계하고 운영해왔습니다. 기능을 빨리 쌓는 것보다
+        고객이 실제로 겪는 문제의 구조를 먼저 이해하는 걸 중요하게 생각합니다.
+      </p>
+      <p>
+        성형외과 고객사와 직접 인터뷰하면서 이런 이야기를 들었습니다.
+      </p>
+      <blockquote>
+        병원마다 강점 시술이 다른데, 범용 카테고리로는 그 강점이 드러나지 않는다.
+      </blockquote>
+      <p>
+        이 목소리를 카테고리 도메인 구조 개선으로 옮겼습니다. 이렇게 현장의 문제를 도메인 모델과
+        백엔드 아키텍처로 풀어내는 일을 합니다.
+      </p>
+      <p>
+        “왜 이렇게 설계했는가”를 설명할 수 있는 코드를 지향하고, 기술 선택의 트레이드오프를
+        팀에 설득하는 일을 좋아합니다.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">주식회사 우리의 이야기 · 백엔드 엔지니어</span>
+        <span class="item-date">2025.07 – 재직 중</span>
+      </div>
+      <p class="item-sub">
+        성형 모델 B2C 앱 ‘퍼플영’ 백엔드 개발 · 아키텍처·데이터 모델 설계
+        <br>
+        누적 회원 15,000명 · MAU 1,000명 규모로 성장·운영
+      </p>
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">성형·미용의료 카테고리 도메인 구조 재정리</h3>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            성형외과 고객사 인터뷰에서 “병원마다 강점 시술이 다른데 범용 카테고리로는 그 강점이
+            드러나지 않는다”는 이야기를 들었습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            범용 구조를 그대로 두고 화면만 손대는 대신, 진료·시술 카테고리의 도메인 구조 자체를
+            도메인에 맞는 계층으로 재정리했습니다. 카테고리 계층·정렬·노출 기준을 함께 개선했습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            사용자의 탐색 경험과 운영자의 관리 편의성을 함께 개선했습니다.
+          </dd>
+        </dl>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">리뷰 조회 성능 개선</h3>
+          <span class="case-metric">1.422s → 0.401s · 72%↓</span>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            리뷰를 랜덤으로 조회하도록 기획돼 있어, 인덱스를 타지 못하고 매번 풀스캔이 발생했습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            랜덤 조회는 인덱스를 태울 방법이 없어 쿼리 튜닝으로는 한계가 있다고 보고, 기획을 바꾸는
+            쪽으로 접근했습니다. 마침 관심항목 설정은 사용자가 설정만 할 뿐 어디에도 쓰이지 않는
+            기능이었는데, 이를 리뷰 조회에 연결해 성능 문제와 방치된 기능을 함께 해소했습니다.
+          </dd>
+          <dd>
+            관심항목과 리뷰를 잇는 가중치 테이블을 두고, 카테고리별 우선순위 컬럼을 가중치로 삼아
+            정렬하도록 바꿨습니다. 항목 매칭에는 pg_trgm 기반 인덱스를 설계해, 랜덤 정렬로
+            풀스캔하던 조회를 인덱스를 타는 조회로 전환했습니다. 페이지네이션도 offset 기반에서
+            cursor 기반으로 바꿨습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            풀스캔이 사라지고, 개발 환경 4만 건 기준으로 조회 시간이 1.422초에서 0.401초로 72%
+            줄었습니다. 사내 슬로우 쿼리 기준인 1초 아래로 내려왔습니다.
+          </dd>
+          <dd>
+            설정만 하고 쓰이지 않던 관심항목이 실제 리뷰 조회에 반영되기 시작했습니다.
+          </dd>
+        </dl>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">pg_trgm</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">금지어 필터 성능 개선</h3>
+          <span class="case-metric">금지어 5,000개 · 실시간</span>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            금지어 검사가 contains 기반 반복문이었습니다. 입력 하나마다 금지어 목록 전체를 훑는
+            구조라, 금지어가 늘어날수록 검사 시간이 그에 비례해 늘어났습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            금지어 목록이 5,000개 규모인데 실시간 필터링이 필요했습니다. 목록 크기에 비례해
+            느려지는 구조로는 감당할 수 없다고 보고, 다중 패턴 검색에 맞는 아호-코라식 알고리즘으로
+            바꿨습니다. 금지어를 trie로 만들어두면 입력을 한 번만 훑으면서 모든 금지어를 동시에
+            찾기 때문에, 금지어가 늘어도 검사 비용이 입력 길이에만 좌우됩니다.
+          </dd>
+          <dd>
+            trie는 매 요청마다 만들 필요가 없어, 애플리케이션 기동 시점에 한 번 구성해 로컬 캐시에
+            올려두고 재사용했습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            금지어 개수에 비례해 늘어나던 검사 비용이 사라져, 목록이 커져도 실시간 필터링을 유지할
+            수 있게 됐습니다. JMeter로 10만 동시 요청 부하 테스트를 거쳐 확인했습니다.
+          </dd>
+        </dl>
+        <div class="tags">
+          <span class="tag">JMeter</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">테스트 작성</h3>
+          <span class="case-metric">테스트 700여 건 · 커버리지 70%</span>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            기능 변경이 잦고 DB 마이그레이션 변동이 커, 스키마가 바뀔 때마다 기존 로직이 조용히
+            깨질 위험이 있었습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            검증의 무게를 도메인과 repository 테스트에 뒀습니다. 변경이 잦고 마이그레이션이 자주
+            일어나는 만큼, 회귀가 실제로 발생하는 지점이 거기였기 때문입니다.
+          </dd>
+          <dd>
+            인수 테스트는 사용자 행동 기반으로 작성하고, API 테스트는 happy case만 다뤘습니다.
+            같은 검증을 여러 층에서 중복하지 않도록 층마다 역할을 나눈 것입니다.
+          </dd>
+          <dd>
+            JUnit 5와 RestAssured로 단위·통합 테스트 700여 건을 작성하고, Jacoco로 커버리지를
+            측정했습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            테스트 커버리지를 70% 수준으로 유지하며, 기능 변경과 마이그레이션이 잦은 환경에서도
+            회귀를 자동으로 걸러낼 수 있게 됐습니다.
+          </dd>
+          <dd>
+            사내에서 AI를 적극적으로 활용하는 만큼, 테스트를 AI 개발의 하네스로 삼았습니다.
+            커버리지를 확보해 AI가 바꾼 코드의 회귀를 자동으로 판별하게 하고, AI가 기능을 설계할
+            때는 구현에 앞서 테스트 시나리오를 먼저 제시하도록 구성했습니다. 검증 기준을 코드보다
+            앞에 두면 사람이 리뷰할 지점도 구현이 아니라 시나리오가 됩니다.
+          </dd>
+        </dl>
+        <div class="tags">
+          <span class="tag">JUnit 5</span>
+          <span class="tag">RestAssured</span>
+          <span class="tag">Jacoco</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">구조화 로깅 도입</h3>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            Loki로 로그를 수집하고 있었지만 정작 로그는 sysout으로 찍히고 있었습니다. 형식이 없으니
+            필드로 검색할 수 없었고, 어떤 요청에서 나온 로그인지 묶을 수단도 없어 수집 도구를
+            제대로 쓰지 못하는 상태였습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            인터셉터에서 요청마다 Trace ID를 생성해 MDC에 심어, 한 요청에서 나온 로그가 같은 ID로
+            묶이게 했습니다. 로그는 Logback JSON encoder로 남겨 Loki에서 필드 단위로 조회할 수
+            있게 했습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            Grafana에서 Trace ID로 요청 단위 로그를 따라갈 수 있게 되면서, 이미 쓰고 있던 Loki가
+            실제로 쓸모를 갖게 됐습니다.
+          </dd>
+        </dl>
+        <div class="tags">
+          <span class="tag">Logback</span>
+          <span class="tag">Loki</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">MDC</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">공통 코드·카테고리 2-Tier 캐시</h3>
+          <span class="case-metric">Local + Redis</span>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            각 서버 인스턴스가 공통 코드·카테고리를 로컬 캐시로만 들고 있었습니다. 스케일아웃하면서
+            인스턴스마다 같은 데이터가 중복 적재됐고, 한 곳에서 수정해도 다른 인스턴스는 옛 데이터를
+            그대로 들고 있어 정합성이 깨졌습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            Redis를 상위 캐시로 두고 Caffeine 로컬 캐시가 Redis만 바라보도록 설계했습니다.
+            수정·삭제 시 Redis Pub/Sub로 전 인스턴스의 로컬 캐시를 즉시 무효화해 정합성을 맞췄습니다.
+          </dd>
+          <dd>
+            다만 Pub/Sub은 메시지를 놓친 인스턴스에 재전송하지 않습니다. 그래서 TTL을 1~2분으로 짧게
+            둬 이벤트가 유실돼도 오래 어긋나지 않게 하고, 무효화를 직접 호출할 수 있는 API를 별도로
+            두어 이중으로 방어했습니다. TTL은 정합성 수단이 아니라 안전장치로만 쓴 셈입니다.
+          </dd>
+          <dd>
+            메모리 중복과 조회 정합성 사이의 트레이드오프를 이 구조로 관리했습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            공통 코드·카테고리 조회에서 DB 접근이 사라져 슬로우 쿼리가 해소됐고, 스케일아웃
+            환경에서도 인스턴스 간 정합성과 일관된 응답을 확보했습니다.
+          </dd>
+        </dl>
+        <div class="tags">
+          <span class="tag">Redis</span>
+          <span class="tag">Caffeine</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">빅링크 AI · 백엔드 엔지니어</span>
+        <span class="item-date">2023.09 – 2025.05</span>
+      </div>
+      <p class="item-sub">
+        인플루언서 마케팅 자동화 플랫폼 ·
+        <a href="https://biglinkai.com/introduction" target="_blank" rel="noopener">biglinkai.com</a>
+        <br>
+        교보생명 오픈 이노베이션 · 경기도 혁신 이노베이션 · 창업성장기술 R&amp;D 디딤돌 · TIPS 선정
+      </p>
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">결제 흐름 설계</h3>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            결제 코드가 두 서버에 나뉘어 있었고, 망취소가 구현돼 있지 않았습니다. 결제 이후의 후속
+            처리가 실패해도 로그가 남지 않아 무엇이 어디서 멈췄는지 추적할 수 없었습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            흩어져 있던 결제 코드를 결제 서버로 모으고, KG이니시스 연동의 승인 흐름은 동기로
+            처리했습니다. 돈이 오가는 흐름은 결과를 즉시 확정해야 하고, 승인은 성공했는데 우리 쪽
+            반영이 실패하면 망취소로 되돌려야 하기 때문입니다.
+          </dd>
+          <dd>
+            결제 수단별로 흐름이 갈립니다. 카드는 PG 인증 결과 콜백을 받은 뒤 승인 요청부터 결과
+            확정까지를 한 흐름에서 처리하고, 구독형은 빌링키로 승인 API를 직접 호출합니다.
+            가상계좌는 발급과 입금 시점이 분리돼 입금 통보가 웹훅으로 뒤늦게 도착하므로,
+            그 지점부터 별도 흐름으로 다뤘습니다.
+          </dd>
+          <dd>
+            결제 이후의 알림·상태 변경·후속 처리는 이벤트로 분리해 결제 모듈이 결제 자체에만
+            책임지게 했고, 주문형과 구독형의 흐름 차이에 맞춰 이벤트 구조를 설계했습니다.
+          </dd>
+          <dd>
+            메시지 브로커는 Kafka를 골랐습니다. 이미 이벤트 메시지에 Kafka를 쓰고 있어 새 인프라를
+            들이지 않고 기존 운영 경험을 그대로 쓸 수 있었습니다.
+          </dd>
+          <dd>
+            결제 트랜잭션과 이벤트 발행의 일관성은 트랜잭션 아웃박스 패턴으로 맞췄습니다. 결제는
+            커밋됐는데 발행이 실패하면 후속 처리가 조용히 유실되므로, 이벤트를 결제와 같은 트랜잭션
+            안에서 아웃박스 테이블에 남기고 별도 프로세스가 이 테이블을 폴링해 Kafka로 발행하도록
+            했습니다. 발행 전 이벤트가 DB에 남아 있어 유실이 없고, 실패한 이벤트도 기록으로 추적할
+            수 있습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            두 서버에 나뉘어 있던 결제 코드가 결제 서버 하나로 모였습니다. 결제 흐름을 운영팀이
+            대시보드에서 추적할 수 있게 되면서, 결제가 실패한 건은 곧바로 환불 처리할 수 있게
+            됐습니다.
+          </dd>
+        </dl>
+        <div class="tags">
+          <span class="tag">Kafka</span>
+          <span class="tag">KG이니시스</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">예약 발행</h3>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            네이버·티스토리·인스타그램·페이스북에 게시글을 예약 발행하는 기능을 Kafka 기반 비동기로
+            처리했는데, 같은 메시지가 중복으로 들어오는 경우가 있었습니다. 스케일아웃된 환경이라
+            중복 메시지를 그대로 처리하면 같은 글이 여러 번 발행될 수 있었습니다.
+          </dd>
+
+          <dt>원인</dt>
+          <dd>
+            Kafka는 at-least-once 전달을 보장하기 때문에 리밸런싱이나 재처리 과정에서 중복 메시지가
+            나오는 것이 정상 동작 범위였습니다. 중복을 막을 책임은 소비 측에 있었습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            중복이 생길 수 있는 층위가 둘이라 각각 막았습니다. 인스턴스 사이에서는 예약 건 ID를 키로
+            한 Redis 분산 락으로 한 인스턴스만 집도록 하고, 인스턴스 안에서는 세마포어로 같은
+            메시지가 여러 스레드에 동시에 잡히지 않게 했습니다.
+          </dd>
+          <dd>
+            다만 락은 동시 실행만 막습니다. 락이 풀린 뒤 같은 메시지가 다시 들어오는 경우까지
+            거르려면 상태를 봐야 하므로, 락을 잡은 뒤 이미 발행됐는지를 확인하고 처리 여부를
+            결정했습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            스케일아웃 환경에서도 같은 글이 중복 발행되지 않게 됐습니다.
+          </dd>
+        </dl>
+        <div class="tags">
+          <span class="tag">Kafka</span>
+          <span class="tag">Redis</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">테스트 기반 마련</h3>
+          <span class="case-metric">테스트 400여 개 · CI 연동</span>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            테스트 코드가 전무한 상태여서, 코드를 고칠 때마다 기존 기능이 깨지지 않았는지
+            매번 사람이 직접 확인해야 했습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            전부를 덮는 대신 실패 비용이 큰 도메인부터 시작했습니다. 원고 컨펌은 광고주에게 원고가
+            직접 전송되고 결제는 돈이 걸려 있어, 여기서 나는 버그의 대가가 가장 컸습니다.
+          </dd>
+          <dd>
+            작성 기준을 정했습니다. 단위 테스트는 비즈니스 로직과 상태 변경만 도메인 테스트로 다루고,
+            인수 테스트는 사용자 시나리오 전체를 검증합니다 — 비밀번호 변경이라면 로그인부터 변경
+            실패·성공까지요.
+          </dd>
+          <dd>
+            검증 방식은 Fake로 통일했습니다. 모킹은 어떤 호출이 일어났는지를 볼 때 쓰는 도구인 반면
+            Fake는 상태 검증에 맞는데, 이 서비스는 상태 변경이 잦고 거기서 나는 버그의 위험이 가장
+            컸습니다. 그래서 상태를 실제로 들고 있는 Fake 객체를 Java 코드로 직접 작성하는 것을
+            컨벤션으로 삼았습니다.
+          </dd>
+          <dd>
+            JUnit 4로 테스트 400여 개를 작성하고, CI에 인수 테스트까지 포함시켰습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            새로 합류한 팀원이 원고 제출 시 상태 변경 로직을 수정하다 만든 사이드 이펙트를
+            테스트가 잡아냈습니다.
+          </dd>
+        </dl>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">챗봇 프롬프트 조회 성능 개선</h3>
+          <span class="case-metric">6.44s → 1.24s · 80%↓</span>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            챗봇 프롬프트 조회 응답이 평균 6.44초로, 사용자 이탈을 유발하는 핵심 병목이었습니다.
+          </dd>
+
+          <dt>원인</dt>
+          <dd>
+            실행 계획을 분석해 인덱스 비효율을 병목으로 특정했습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            단순 캐싱으로 응답 시간을 가리는 대신, 프롬프트 조회 인덱스를 재설계했습니다.
+            조회에 쓰이는 컬럼을 모두 포함한 커버링 인덱스로 전환하고 쿼리를 튜닝해,
+            테이블 접근 자체를 없앴습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            평균 응답 시간이 6.44초에서 1.24초로 80% 단축됐고, 측정으로 검증했습니다.
+          </dd>
+        </dl>
+        <div class="tags">
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-head">
+          <h3 class="case-title">이미지 서버 개발</h3>
+        </div>
+        <dl class="case-body">
+          <dt>문제</dt>
+          <dd>
+            5개 API 서버에 이미지 업로드·다운로드 로직이 중복돼 있었고, multipart로 동기 처리하는
+            구조라 이미지 전송이 끝날 때까지 API 서버가 묶여 있었습니다.
+          </dd>
+
+          <dt>해결</dt>
+          <dd>
+            인플루언서가 한 번에 15장 이상, 많게는 30~40장의 고화질 사진을 올리는 서비스였습니다.
+            multipart 동기 업로드를 유지하면 업로드가 끝날 때까지 API 서버가 묶여 성능과 업로드 경험이
+            함께 나빠질 것으로 판단했습니다.
+          </dd>
+          <dd>
+            클라이언트가 presigned URL을 발급받아 S3에 직접 업로드하도록 바꿔, 이미지 트래픽이
+            API 서버를 거치지 않게 했습니다.
+          </dd>
+          <dd>
+            리사이즈는 요청 시점에 변환하지 않고, S3 업로드 이벤트로 Lambda를 트리거해 미리 생성한 뒤
+            별도로 저장했습니다. 5개 클라이언트가 모두 같은 규격을 사용하고 있어 요청마다 변환할
+            이유가 없다고 판단했습니다.
+          </dd>
+
+          <dt>결과</dt>
+          <dd>
+            이미지 트래픽이 API 서버를 거치지 않게 되면서, 30~40장을 한 번에 올리는 동안에도
+            API 서버가 업로드에 묶이지 않게 됐습니다. 5개 서버에 흩어져 있던 업로드·다운로드 로직도
+            presigned URL 발급으로 일원화했습니다.
+          </dd>
+        </dl>
+        <div class="tags">
+          <span class="tag">Kotlin</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">AWS S3</span>
+          <span class="tag">AWS Lambda</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">그로스 헬퍼 · 설문·인터뷰 매칭 플랫폼</span>
+        <span class="item-date">2023.06 – 2024.06</span>
+      </div>
+      <p class="item-sub">
+        사이드 프로젝트 · 백엔드 단독 ·
+        <a href="https://github.com/GrowthHelper-Intermission" target="_blank" rel="noopener">GitHub</a>
+        <br>
+        2023 창업동아리 우수상 · 동국대학교 창업교육센터
+      </p>
+      <ul>
+        <li>기획 단계부터 참여해 백엔드를 단독으로 설계·개발·운영했습니다.</li>
+        <li>2024년 1월 앱스토어·플레이스토어에 출시해 MAU 1,000명, 누적 거래액 약 4,000만 원을 기록했습니다.</li>
+        <li>GitHub Actions와 Docker 기반 CI/CD를 직접 구축했습니다.</li>
+        <li>신뢰도 높은 매칭을 위해 스크리닝 기반 필터링 시스템을 설계·구현했습니다.</li>
+      </ul>
+      <figure class="figure">
+        <img src="images/growthhelper-architecture.png"
+             alt="그로스 헬퍼 서버 아키텍처: GitHub Actions에서 S3·ECR로 배포하고 CodeDeploy가 EC2에 적용,
+                  EC2 안에서 Nginx가 Docker의 api:8080으로 전달하며 RDS MySQL과 Redis를 사용">
+        <figcaption>서버 아키텍처</figcaption>
+      </figure>
+      <div class="tags">
+        <span class="tag">Java</span>
+        <span class="tag">Spring Boot</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Redis</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Nginx</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">AWS</span>
+      </div>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Open Source</h2>
+
+    <p class="os-intro">
+      오픈소스 6개 프로젝트에 버그 수정, 검증 로직, CI·정적분석, 테스트 보강 PR을 기여했고
+      메인테이너 리뷰를 거쳐 9건이 머지됐습니다.
+    </p>
+
+    <div class="os">
+      <div>
+        <div class="os-repo">Keycloak</div>
+        <div class="os-prs">
+          <a href="https://github.com/keycloak/keycloak/pull/47684" target="_blank" rel="noopener">#47684</a>
+        </div>
+      </div>
+      <p class="os-desc">
+        빈 값이나 잘못된 OIDC 속성에서 발생하던 NumberFormatException을 수정해 인증 흐름을
+        안정화했습니다.
+      </p>
+    </div>
+
+    <div class="os">
+      <div>
+        <div class="os-repo">Valkey GLIDE</div>
+        <div class="os-prs">
+          <a href="https://github.com/valkey-io/valkey-glide/pull/5687" target="_blank" rel="noopener">#5687</a>
+        </div>
+      </div>
+      <p class="os-desc">
+        Java 린트 파이프라인에 Checkstyle을 도입했습니다. 전 서브프로젝트에 적용하고 import 규칙을
+        위반하던 18개 파일을 정비했습니다.
+      </p>
+    </div>
+
+    <div class="os">
+      <div>
+        <div class="os-repo">Apache Gravitino</div>
+        <div class="os-prs">
+          <a href="https://github.com/apache/gravitino/pull/10663" target="_blank" rel="noopener">#10663</a>
+        </div>
+      </div>
+      <p class="os-desc">
+        모델 버전 요청 검증을 try 블록 안으로 옮겨 예외 처리 정합성을 맞췄습니다.
+      </p>
+    </div>
+
+    <div class="os">
+      <div>
+        <div class="os-repo">Checkstyle</div>
+        <div class="os-prs">
+          <a href="https://github.com/checkstyle/checkstyle/pull/19576" target="_blank" rel="noopener">#19576</a>
+          <a href="https://github.com/checkstyle/checkstyle/pull/19577" target="_blank" rel="noopener">#19577</a>
+        </div>
+      </div>
+      <p class="os-desc">
+        Javadoc 관련 Check의 기본 프로퍼티를 정비했습니다. (MissingJavadocType, JavadocContentLocation)
+      </p>
+    </div>
+
+    <div class="os">
+      <div>
+        <div class="os-repo">DSpace</div>
+        <div class="os-prs">
+          <a href="https://github.com/DSpace/DSpace/pull/12248" target="_blank" rel="noopener">#12248</a>
+          <a href="https://github.com/DSpace/DSpace/pull/12255" target="_blank" rel="noopener">#12255</a>
+        </div>
+      </div>
+      <p class="os-desc">
+        dspace-api 모듈의 빈 Javadoc 태그를 두 차례에 걸쳐 일괄 정리했습니다.
+      </p>
+    </div>
+
+    <div class="os">
+      <div>
+        <div class="os-repo">harness-starter-kit</div>
+        <div class="os-prs">
+          <a href="https://github.com/harnessworks/harness-starter-kit/pull/39" target="_blank" rel="noopener">#39</a>
+          <a href="https://github.com/harnessworks/harness-starter-kit/pull/42" target="_blank" rel="noopener">#42</a>
+        </div>
+      </div>
+      <p class="os-desc">
+        AI 코딩 에이전트 검증 하네스에 Rust 스택 프로필을 추가하고, Go fixture의 빌드·툴체인 경로
+        검증을 보강했습니다.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">동국대학교</span>
+        <span class="item-date">2020.03 – 2026.08</span>
+      </div>
+      <p class="item-sub">산업시스템공학과 · 졸업 예정 · 학점 3.72 / 4.5</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">한국교통대학교</span>
+        <span class="item-date">2015.03 – 2018.03</span>
+      </div>
+      <p class="item-sub">산업공학과 · 중퇴 · 학점 3.42 / 4.5</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Certification</h2>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">SQL 개발자 (SQLD)</span>
+        <span class="item-date">2022.12</span>
+      </div>
+      <p class="item-sub">한국데이터산업진흥원</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 전윤환
   </footer>
 
-</main>
+</div>
 </body>
 </html>
